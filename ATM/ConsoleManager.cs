@@ -20,9 +20,9 @@ namespace ATM
 
         public ConsoleManager()
         {
-            IntPtr handle = GetConsoleWindow();
-            IntPtr sysMenu = GetSystemMenu(handle, false);
-            if (handle != IntPtr.Zero)
+            IntPtr window = GetConsoleWindow();
+            IntPtr sysMenu = GetSystemMenu(window, false);
+            if (window != IntPtr.Zero)
             {
                 DeleteMenu(sysMenu, 0xF030, 0x00000000);
                 DeleteMenu(sysMenu, 0xF000, 0x00000000);
