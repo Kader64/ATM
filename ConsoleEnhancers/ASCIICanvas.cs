@@ -46,17 +46,24 @@ namespace ConsoleEnhancers
             Console.WriteLine(view.ToString());
         }
 
-        public void SetPoint(int x, int y, bool autoBufferRender = true)
+        public void SetPoint(int x, int y, bool autoBufferRender = false)
         {
             buffer[y, x] = fillStyle+"█";
             if (autoBufferRender) renderBuffer(); 
         }
 
-
-
-        public void FillRect(int x, int y , int w, int h)
+        public void FillRect(int x, int y , int w, int h, bool autoBufferRender = false)
         {
-
+            for (int rH = 0; rH < h; rH++)
+            {
+                for (int rW = 0; rW < w; rW++)
+                {
+                    if (y + rH >= CanvasH || x + rW >= CanvasW) continue;
+                    buffer[y + rH, x + rW] = fillStyle + "█";
+                }
+            }
+            if (autoBufferRender) renderBuffer();
+            if (fillStyle != null) fillStyle = "";
         }
 
         public void StrokeRect(int x, int y, int w, int h)
