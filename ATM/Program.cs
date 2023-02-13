@@ -1,23 +1,13 @@
 ﻿using ConsoleEnhancers;
+using System.Runtime.InteropServices;
 
-var canvas = new ASCIICanvas(200, 200);
 
-//System.Threading.Thread.Sleep(5000);
-
-demo();
-void demo()
+class Program
 {
 
-    for(int y = 0;y < 200; y+=10)
+    static void Main(string[] args)
     {
-        for (int x = 0; x < 200; x+=10)
-        {
-            canvas.FillRect(x,y,10,10);
-        }
-        canvas.fillStyle = EscapeColor.Random();
+        
+        
     }
-    canvas.renderBuffer();
-    canvas.flushBuffer();
-    demo();
 }
-
