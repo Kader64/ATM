@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Drawing;
+using System.Text;
 
 namespace ConsoleEnhancers
 {
@@ -16,10 +17,10 @@ namespace ConsoleEnhancers
 
         public ASCIICanvas(int w, int h) {
 
-            CanvasH = h;
-            CanvasW = h;
+            CanvasH = h+1;
+            CanvasW = h+1;
 
-            buffer = new string[h,w];
+            buffer = new string[CanvasH,CanvasW];
 
             fillStyle = EscapeColor.Color("White");
             strokeStyle = EscapeColor.Color("White");
@@ -58,7 +59,7 @@ namespace ConsoleEnhancers
             {
                 for (int rW = 0; rW < w; rW++)
                 {
-                    if (y + rH >= CanvasH || x + rW >= CanvasW) continue;
+                    if (y + rH >= CanvasH || x + rW >= CanvasW || x + rW < 0 || y+rH < 0) continue;
                     buffer[y + rH, x + rW] = fillStyle + "█";
                 }
             }
@@ -72,7 +73,7 @@ namespace ConsoleEnhancers
             {
                 for (int rW = 0; rW < w; rW++)
                 {
-                    if (y + rH >= CanvasH || x + rW >= CanvasW) continue;
+                    if (y + rH >= CanvasH || x + rW >= CanvasW || x + rW < 0 || y + rH < 0) continue;
                     if (rH == 0 || rW == 0 || rW == w-1 || rH == h-1) buffer[y + rH, x + rW] = strokeStyle + "█";
                 }
             }
@@ -80,9 +81,41 @@ namespace ConsoleEnhancers
             if (strokeStyle != "") strokeStyle = "";
         }
 
-        public void strokeLine(int x1, int y1, int x2, int y2, int t) 
-        { 
-            
+        public void strokeLine(int x1, int y1, int x2, int y2) 
+        {
+            int w = x2 - x1;
+            int h = y2 - y1;
+            int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0;
+            if (w < 0) dx1 = -1; else if (w > 0) dx1 = 1;
+            if (h < 0) dy1 = -1; else if (h > 0) dy1 = 1;
+            if (w < 0) dx2 = -1; else if (w > 0) dx2 = 1;
+            int longest = Math.Abs(w);
+            int shortest = Math.Abs(h);
+            if (!(longest > shortest))
+            {
+                longest = Math.Abs(h);
+                shortest = Math.Abs(w);
+                if (h < 0) dy2 = -1; else if (h > 0) dy2 = 1;
+                dx2 = 0;
+            }
+            int numerator = longest >> 1;
+            for (int i = 0; i <= longest; i++)
+            {
+                if (y1 >= CanvasH || x1 >= CanvasW || x1 < 0 || y1 < 0) continue;
+                buffer[y1, x1] = strokeStyle + "█";
+                numerator += shortest;
+                if (!(numerator < longest))
+                {
+                    numerator -= longest;
+                    x1 += dx1;
+                    y1 += dy1;
+                }
+                else
+                {
+                    x1 += dx2;
+                    y1 += dy2;
+                }
+            }
         }
 
     }

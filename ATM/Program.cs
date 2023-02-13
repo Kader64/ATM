@@ -15,22 +15,57 @@ class Program
 
         var canvas = new ASCIICanvas(100, 100);
 
-        demo();
+        //demo();
 
-        void demo(){
-            for (int y = 0; y < 100; y += 10)
-            {
-                for (int x = 0; x < 100; x += 10)
-                {
-                    canvas.StrokeRect(x, y, 10, 10);
-                    canvas.strokeStyle = EscapeColor.Random();
-                }
-                
-            }
+        //void demo(){
+        //    for (int y = 0; y < 100; y += 10)
+        //    {
+        //        for (int x = 0; x < 100; x += 10)
+        //        {
+        //            canvas.StrokeRect(x, y, 10, 10);
+        //            canvas.strokeStyle = EscapeColor.Random();
+        //        }
+
+        //    }
+        //    canvas.renderBuffer();
+        //    Thread.Sleep(500);
+        //    demo();
+        //}
+
+        int y = 90;
+
+        int forceY = 10;
+
+        int x = 40;
+
+        while (true)
+        {
+
+            canvas.flushBuffer();
+
+            canvas.strokeStyle = EscapeColor.Color("Yellow");
+            canvas.strokeLine(0, 0, x , y);
+            canvas.strokeStyle = EscapeColor.Color("Blue");
+            canvas.strokeLine(0, 100, x, y + 10);
+            canvas.strokeStyle = EscapeColor.Color("Teal");
+            canvas.strokeLine(100, 100, x + 10, y + 10);
+            canvas.strokeStyle = EscapeColor.Color("Green");
+            canvas.strokeLine(100, 0, x + 10, y);
+
+            canvas.fillStyle = EscapeColor.Color("Red");
+            canvas.FillRect(x,y,10,10);
+
+            y -= forceY;
+
+            forceY--;
+
+            if (y + 10 >= 100) forceY = 10;
+
             canvas.renderBuffer();
-            Thread.Sleep(500);
-            demo();
+            Thread.Sleep(10);
         }
+
+        
         
     }
 }
