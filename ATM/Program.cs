@@ -1,9 +1,12 @@
-﻿class Program
+﻿using ConsoleEnhancers;
+using System.Runtime.InteropServices;
+
+
+class Program
 {
 
     static void Main(string[] args)
     {
-        
         
     }
 }
