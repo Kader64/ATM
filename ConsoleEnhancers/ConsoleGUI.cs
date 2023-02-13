@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleEnhancers
 {
-    public class ConsoleGUI
+    public static class ConsoleGUI
     {
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool SetCurrentConsoleFontEx(IntPtr consoleOutput, bool maximumWindow, ref CONSOLE_FONT_INFO_EX lpConsoleCurrentFont);
@@ -50,6 +50,17 @@ namespace ConsoleEnhancers
         const int TMPF_TRUETYPE = 4;
         const int LF_FACESIZE = 32;
 
+        public static void blockWindowResize()
+        {
+            IntPtr handle = GetConsoleWindow();
+            IntPtr sysMenu = GetSystemMenu(handle, false);
+            if (handle != IntPtr.Zero)
+            {
+                DeleteMenu(sysMenu, 0xF030, 0x00000000);
+                DeleteMenu(sysMenu, 0xF000, 0x00000000);
+            }
+        }
+
         public static void SetConsoleFont(int fontSizeX, int fontSizeY, int fontFamily, int fontWeight)
         {
             IntPtr consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -60,18 +71,6 @@ namespace ConsoleEnhancers
             fontInfo.FontWeight = fontWeight;
 
             SetCurrentConsoleFontEx(consoleHandle, false, ref fontInfo);
-        }
-
-        public ConsoleGUI()
-        {
-            IntPtr handle = GetConsoleWindow();
-            IntPtr sysMenu = GetSystemMenu(handle, false);
-            if (handle != IntPtr.Zero)
-            {
-                DeleteMenu(sysMenu, 0xF030, 0x00000000);
-                DeleteMenu(sysMenu, 0xF000, 0x00000000);
-            }
-            Console.CursorVisible = false;
         }
     }
 }

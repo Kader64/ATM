@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    internal class Menu
+    internal static class Menu
     {
         static void showMainMenu()
         {
