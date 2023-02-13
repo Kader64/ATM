@@ -29,7 +29,7 @@ namespace ATM
             }
             Console.CursorVisible = false;
         }
-        public static void setConsoleSize(int width, int height)
+        public void setConsoleSize(int width, int height)
         {
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
