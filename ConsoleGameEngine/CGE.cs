@@ -1,6 +1,6 @@
 ﻿namespace ConsoleGameEngine
 {
-    public class Class1
+    public class CGE
     {
 
     }
