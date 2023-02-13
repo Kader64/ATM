@@ -63,12 +63,21 @@ namespace ConsoleEnhancers
                 }
             }
             if (autoBufferRender) renderBuffer();
-            if (fillStyle != null) fillStyle = "";
+            if (fillStyle != "") fillStyle = "";
         }
 
-        public void StrokeRect(int x, int y, int w, int h)
+        public void StrokeRect(int x, int y, int w, int h, bool autoBufferRender = false)
         {
-
+            for (int rH = 0; rH < h; rH++)
+            {
+                for (int rW = 0; rW < w; rW++)
+                {
+                    if (y + rH >= CanvasH || x + rW >= CanvasW) continue;
+                    if (rH == 0 || rW == 0 || rW == w-1 || rH == h-1) buffer[y + rH, x + rW] = strokeStyle + "█";
+                }
+            }
+            if (autoBufferRender) renderBuffer();
+            if (strokeStyle != "") strokeStyle = "";
         }
 
         public void strokeLine(int x1, int y1, int x2, int y2, int t) 

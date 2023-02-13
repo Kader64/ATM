@@ -9,7 +9,9 @@ class Program
     {
 
         ConsoleGUI.SetConsoleFont(3,3,0,0);
-        Console.SetWindowSize(200,200);
+        ConsoleGUI.blockWindowResize();
+        Console.SetWindowSize(200, 200);
+        Console.SetBufferSize(200, 200);
 
         var canvas = new ASCIICanvas(100, 100);
 
@@ -20,13 +22,13 @@ class Program
             {
                 for (int x = 0; x < 100; x += 10)
                 {
-                    canvas.FillRect(x, y, 10, 10);
-                    canvas.fillStyle = EscapeColor.Random();
+                    canvas.StrokeRect(x, y, 10, 10);
+                    canvas.strokeStyle = EscapeColor.Random();
                 }
                 
             }
             canvas.renderBuffer();
-            System.Threading.Thread.Sleep(500);
+            Thread.Sleep(500);
             demo();
         }
         
