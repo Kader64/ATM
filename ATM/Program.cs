@@ -10,8 +10,11 @@ class Program
 
         ConsoleManager.SetConsoleFont(3,3,0,0);
         ConsoleManager.blockWindowResize();
-        Console.SetWindowSize(200, 200);
-        Console.SetBufferSize(200, 200);
+        Console.CursorVisible = false;
+        Console.SetWindowSize((int)Console.LargestWindowWidth / 2, (int)Console.LargestWindowHeight / 2);
+        Console.SetBufferSize((int)Console.LargestWindowWidth / 2, (int)Console.LargestWindowHeight / 2);
+
+
 
         var canvas = new ASCIICanvas(100, 100);
 
