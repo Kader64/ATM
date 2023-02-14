@@ -43,6 +43,10 @@ namespace ConsoleGameEngine
 
             }
         }
+        public static string ColorRGB(int r, int g, int b)
+        {
+            return $"\x1b[38;2;{r};{g};{b}m";
+        }
 
         public static string Random()
         {
