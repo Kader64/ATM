@@ -4,13 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM", "ATM\ATM.csproj", "{B1E79891-EE69-4054-8AD8-7A69BE1EA16A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{096DA83A-FA8D-449E-9D2F-F66EBAFB14B5} = {096DA83A-FA8D-449E-9D2F-F66EBAFB14B5}
-	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleEnhancers", "ConsoleEnhancers\ConsoleEnhancers.csproj", "{A6A330CD-6392-45C6-8684-BD6C98E6B90F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleGameEngine", "ConsoleGameEngine\ConsoleGameEngine.csproj", "{096DA83A-FA8D-449E-9D2F-F66EBAFB14B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleGameEngine", "ConsoleEnhancers\ConsoleGameEngine.csproj", "{A6A330CD-6392-45C6-8684-BD6C98E6B90F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +21,6 @@ Global
 		{A6A330CD-6392-45C6-8684-BD6C98E6B90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6A330CD-6392-45C6-8684-BD6C98E6B90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6A330CD-6392-45C6-8684-BD6C98E6B90F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{096DA83A-FA8D-449E-9D2F-F66EBAFB14B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{096DA83A-FA8D-449E-9D2F-F66EBAFB14B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{096DA83A-FA8D-449E-9D2F-F66EBAFB14B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{096DA83A-FA8D-449E-9D2F-F66EBAFB14B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
