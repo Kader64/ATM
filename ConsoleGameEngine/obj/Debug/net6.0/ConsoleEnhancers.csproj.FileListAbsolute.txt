@@ -1,0 +1,12 @@
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\bin\Debug\net6.0\ConsoleEnhancers.deps.json
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\bin\Debug\net6.0\ConsoleEnhancers.dll
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\bin\Debug\net6.0\ConsoleEnhancers.pdb
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.AssemblyInfo.cs
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.dll
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\refint\ConsoleEnhancers.dll
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ConsoleEnhancers.pdb
+C:\Users\Admin\source\repos\ATM\ConsoleEnhancers\obj\Debug\net6.0\ref\ConsoleEnhancers.dll
