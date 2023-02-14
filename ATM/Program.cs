@@ -8,15 +8,17 @@ class Program
     static void Main(string[] args)
     {
 
+        Console.Title = "ATM";
+
         ConsoleManager.SetConsoleFont(3,3,0,0);
         ConsoleManager.blockWindowResize();
         Console.CursorVisible = false;
         Console.SetWindowSize((int)Console.LargestWindowWidth / 2, (int)Console.LargestWindowHeight / 2);
         Console.SetBufferSize((int)Console.LargestWindowWidth / 2, (int)Console.LargestWindowHeight / 2);
+        Console.SetCursorPosition(0, 0);
 
 
-
-        var canvas = new ASCIICanvas(100, 100);
+        var canvas = new ASCIICanvas(Console.BufferWidth-1,100);
 
         int y = 90;
 
@@ -24,36 +26,30 @@ class Program
 
         int x = 40;
 
+        int z = -2;
+        int f = -2;
+
         while (true)
         {
 
 
             canvas.flushBuffer();
 
-            canvas.strokeStyle = EscapeColor.Color("Yellow");
-            canvas.strokeLine(0, 0, x , y);
-            canvas.strokeStyle = EscapeColor.Color("Blue");
-            canvas.strokeLine(0, 100, x, y + 10);
-            canvas.strokeStyle = EscapeColor.Color("Teal");
-            canvas.strokeLine(100, 100, x + 10, y + 10);
-            canvas.strokeStyle = EscapeColor.Color("Green");
-            canvas.strokeLine(100, 0, x + 10, y);
-
             canvas.fillStyle = EscapeColor.Color("Red");
-            canvas.FillRect(x,y,10,10);
+            canvas.FillRect(x, y, 10, 10);
 
-            y -= forceY;
+            x -= z;
+            y -= f;
 
-            forceY--;
-
-            if (y + 10 >= 100) forceY = 10;
+            if (x > 90 || x <= 0) z = -z;
+            if (y > 90 || y <= 0) f = -f;
 
             canvas.renderBuffer();
             Thread.Sleep(10);
         }
 
-        
-        
+
+
     }
 }
 

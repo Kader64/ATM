@@ -19,12 +19,13 @@ namespace ConsoleGameEngine
         {
 
             CanvasH = h + 1;
-            CanvasW = h + 1;
+            CanvasW = w + 1;
 
             buffer = new string[CanvasH, CanvasW];
 
             fillStyle = EscapeColor.Color("White");
             strokeStyle = EscapeColor.Color("White");
+
         }
 
         public void flushBuffer()
