@@ -24,6 +24,7 @@ class Program
         while (true)
         {
 
+
             canvas.flushBuffer();
 
             canvas.strokeStyle = EscapeColor.Color("Yellow");
