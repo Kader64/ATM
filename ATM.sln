@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM", "ATM\ATM.csproj", "{B1E79891-EE69-4054-8AD8-7A69BE1EA16A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGameEngine", "ConsoleGameEngine\ConsoleGameEngine.csproj", "{0B4401BD-30F5-4AF0-8343-D26087F5E52A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B1E79891-EE69-4054-8AD8-7A69BE1EA16A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E79891-EE69-4054-8AD8-7A69BE1EA16A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E79891-EE69-4054-8AD8-7A69BE1EA16A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
