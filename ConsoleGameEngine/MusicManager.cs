@@ -2,12 +2,11 @@
 using NAudio;
 using NAudio.Wave;
 
-namespace ATM
+namespace ConsoleGameEngine
 {
-    internal class MusicManager
+    public class MusicManager
     {
 
-        //"../../../../Assets/users.json"
         private WaveOutEvent outputDevice;
 
         public MusicManager(string path)

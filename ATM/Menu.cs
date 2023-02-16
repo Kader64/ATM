@@ -12,6 +12,7 @@ namespace ATM
         public static void showMainMenu()
         {
             MusicManager music = new MusicManager("../../../../Assets/menuBG.mp3");
+            music.setVolume(0.1f);
             music.Play();
             Console.WriteLine(makeTitle());
 
