@@ -16,11 +16,10 @@ namespace ATM
             switch (showOptions(options, "The Maze Runner"))
             {
                 case 0:
-                    //START
-                    break;
-                case 1: 
-                    // COS
-                    break;
+                    return;
+         
+                case 1:
+                    return;
                 case 2:
                     showUsers();
                     break;
@@ -60,12 +59,14 @@ namespace ATM
                 Console.ForegroundColor = ConsoleColor.Black;
                 switch (Console.ReadKey().Key)
                 {
+                    case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
                         if (chosenOption < options.Length - 1)
                         {
                             chosenOption++;
                         }
                         break;
+                    case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
                         if (chosenOption > 0)
                         {
