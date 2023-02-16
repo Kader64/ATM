@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "Konto 1",
+    "Balance": 1000
+  },
+  {
+    "Name": "Konto 2",
+    "Balance": 5000
+  },
+  {
+    "Name": "Konto 3",
+    "Balance": 2000
+  }
+]

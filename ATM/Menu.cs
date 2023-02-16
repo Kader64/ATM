@@ -16,18 +16,26 @@ namespace ATM
             switch (showOptions(options, "The Maze Runner"))
             {
                 case 0:
-                    // START
+                    //START
                     break;
                 case 1: 
                     // COS
                     break;
                 case 2:
-                    // LEADERBOARD
+                    showUsers();
                     break;
                 case 3:
                     Exit();
                     break;
             }
+        }
+        public static void showUsers()
+        {
+            Console.WriteLine(makeTitle());
+            FileManager file = new FileManager();
+            file.WriteData();
+
+
         }
         private static int showOptions(string[] options, string title)
         {
@@ -40,7 +48,7 @@ namespace ATM
                     bob.Append(centerText(options[i])+ EscapeColor.ColorRGB(0, 230, 230) +""+ options[i]+"");
                     if (i == chosenOption)
                     {
-                        bob.Append(EscapeColor.ColorRGB(0, 255, 0) +" ◄");
+                        bob.Append(EscapeColor.ColorRGB(0, 255, 0) + " ◄");
                     }
                     else
                     {
@@ -81,8 +89,7 @@ namespace ATM
         }
         private static string centerText(String text)
         {
-            int spaces = (Console.BufferWidth - text.Length) / 2;
-            return new string(' ', spaces);
+            return new string(' ', (Console.BufferWidth - text.Length) / 2);
         }
         private static void Exit()
         {
