@@ -9,33 +9,57 @@ namespace ConsoleGameEngine
     public class CGE
     {
 
-        private ASCIICanvas canvas;
-        private int TPS;
+        public ASCIICanvas canvas;
 
         private Timer gameTimer;
+
+        public Func<int> GameLogic;
+
+        public int SleepTime = 20;
+
+        private const int WINDOW_HEIGHT = 200;
+        private const int WINDOW_WIDTH = 350;
+
+
+        private int frames;
+
+        private DateTime t1;
 
         public CGE() 
         { 
         
+            canvas = new ASCIICanvas(WINDOW_WIDTH,WINDOW_HEIGHT);
+            t1 = DateTime.Now;
         
         }
 
         public void run()
         {
+            Console.Title = "FPS: " + frames;
             internalGameLoop();
         }
         private void internalGameLoop()
         {
-            var t1 = DateTime.Now;
+            canvas.flushBuffer();
+    
+            GameLogic();
 
-            gameLogic(TPS);
 
-            var t2 = DateTime.Now;
+            frames++;
+            if (t1.Second - DateTime.Now.Second < 0)
+            {
+                t1 = DateTime.Now;
+                Console.Title = "FPS: " + frames;
+                frames = 0;
+            }
 
-            TPS = Convert.ToInt32(t2.Subtract(t1).ToString());
+
+            canvas.renderBuffer();
+            System.Threading.Thread.Sleep(SleepTime);
+            internalGameLoop();
         }
 
-        public void gameLogic(int tps) { }
+       
 
         //ConsoleKey key = Console.ReadKey().Key;
 

@@ -26,6 +26,11 @@ namespace ConsoleGameEngine
             fillStyle = EscapeColor.Color("White");
             strokeStyle = EscapeColor.Color("White");
 
+            ConsoleManager.SetConsoleFont(3, 3, 0, 0);
+            Console.SetBufferSize(w+1,h+1);
+            Console.SetWindowSize(w+1,h+1);
+            ConsoleManager.blockWindowResize();
+            
         }
 
         public void flushBuffer()
