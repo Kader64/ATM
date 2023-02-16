@@ -11,7 +11,10 @@ namespace ATM
     {
         public static void showMainMenu()
         {
+            MusicManager music = new MusicManager("../../../../Assets/menuBG.mp3");
+            music.Play();
             Console.WriteLine(makeTitle());
+
             string[] options = { "Wpłać", "Wypłać", "Użytkownicy", "Wyjście" };
             switch (showOptions(options, "The Maze Runner"))
             {
@@ -34,7 +37,6 @@ namespace ATM
             Console.WriteLine(makeTitle());
             FileManager file = new FileManager();
             file.WriteData();
-
 
         }
         private static int showOptions(string[] options, string title)
