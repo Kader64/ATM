@@ -17,6 +17,7 @@ namespace ConsoleGameEngine
         private static string Yellow = "\x1b[33m";
         private static string Purple = "\x1b[35m";
         private static string Teal = "\x1b[36m";
+        private static string Black = "\x1b[30m";
 
         private static string[] colors = { White, Red, Green, Blue, Yellow, Purple, Teal };
 
@@ -38,6 +39,8 @@ namespace ConsoleGameEngine
                 case "Purple": return Purple;
 
                 case "Teal": return Teal;
+
+                case "Black": return Black;
 
                 default: return White;
 

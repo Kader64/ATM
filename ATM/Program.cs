@@ -1,6 +1,11 @@
 ﻿using ATM;
 using ConsoleGameEngine;
 using System.Runtime.InteropServices;
+using ConsoleGameEngine;
+using ATM.Resources.BaseClasses;
+
+
+
 
 
 class Program
@@ -24,26 +29,57 @@ class Program
 
         Menu.showMainMenu();
 
+        music.Stop();
 
-        int y = 90;
+        const int GAME_GRAV = 1;
 
-        int forceY = 10;
+        int playerAcc = 1;
 
-        int x = 40;
+        var player = new Player(20,20);
 
-        int z = -5;
-        int f = -4;
+        var floor = new Floor(0,90,100,5,EscapeColor.Color("White"));
+
+        var gravTick = 0;
 
         int game(CGE ge)
         {
-            ge.canvas.fillStyle = EscapeColor.Color("Red");
-            ge.canvas.FillRect(x, y, 10, 10);
 
-            x -= z;
-            y -= f;
+            player.renderPlayer(ge.canvas);
+            floor.renderObject(ge.canvas);
 
-            if (x > 340 || x <= 0) z = -z;
-            if (y > 190 || y <= 0) f = -f;
+
+
+
+            if (!floor.collides(player.getX(), player.getY(), player.getW(), player.getH()))
+            {
+                player.move(0, playerAcc);
+
+                if (playerAcc < 3 && gravTick <= 0)
+                {
+                    playerAcc += GAME_GRAV;
+                    gravTick = 3;
+                }
+            }
+            else
+            {
+                player.setPos(player.getX(), floor.getY()-player.getH());
+            }
+
+            gravTick--;
+
+            if (Console.KeyAvailable)
+            {
+                ConsoleKey key = Console.ReadKey().Key;
+
+                if(key == ConsoleKey.D) player.move(1, 0);
+                if (key == ConsoleKey.A) player.move(-1, 0);
+                if (key == ConsoleKey.Spacebar)
+                {
+                    player.setPos(player.getX(), player.getY() - 1);
+                    playerAcc = -5;
+                }
+
+            }
 
             return 0;
         }

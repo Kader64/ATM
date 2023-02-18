@@ -15,10 +15,10 @@ namespace ConsoleGameEngine
 
         public Func<int> GameLogic;
 
-        public int SleepTime = 20;
+        public int SleepTime = 10;
 
-        private const int WINDOW_HEIGHT = 200;
-        private const int WINDOW_WIDTH = 350;
+        private const int WINDOW_HEIGHT = 150;
+        private const int WINDOW_WIDTH = 300;
 
 
         private int frames;
@@ -55,13 +55,11 @@ namespace ConsoleGameEngine
 
 
             canvas.renderBuffer();
-            System.Threading.Thread.Sleep(SleepTime);
+            //System.Threading.Thread.Sleep(SleepTime);
             internalGameLoop();
         }
 
-       
-
-        //ConsoleKey key = Console.ReadKey().Key;
+      
 
                     
 
