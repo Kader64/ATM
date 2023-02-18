@@ -25,7 +25,7 @@ class Program
         Menu.showMainMenu();
 
 
-        int y = 90;
+/*        int y = 90;
 
         int forceY = 10;
 
@@ -55,7 +55,7 @@ class Program
         Console.Clear();
 
         GameEngine.run();
-
+*/
 
 
     }

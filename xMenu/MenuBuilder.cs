@@ -40,6 +40,7 @@ namespace xMenu
         public void run()
         {
             bool running = true;
+            Console.Clear();
             while (running)
             {
                 Console.SetCursorPosition(0, 0);
@@ -49,11 +50,13 @@ namespace xMenu
                 {
                     bob.Append(Titles[i].Build()+"\n");
                 }
+                bob.Append("\n");
 
-                for(int i=0; i < Textlines.Count; i++)
+                for(int i = 0; i < Textlines.Count; i++)
                 {
                     bob.Append(Textlines[i].Build()+"\n");
                 }
+                bob.Append("\n");
 
                 for (int i = 0; i < Options.Count; i++)
                 {
@@ -91,6 +94,7 @@ namespace xMenu
                     case ConsoleKey.Enter: running = false; break;
                 }
             }
+            Console.WriteLine(Options[chosenOption].Text);
             Options[chosenOption].Select();
         }
     }
