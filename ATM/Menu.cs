@@ -11,21 +11,20 @@ namespace ATM
     {
         public static void showMainMenu()
         {
-            MusicManager music = new MusicManager("../../../../Assets/menuBG.mp3");
-            music.setVolume(0.1f);
-            music.Play();
+            Console.Clear();
             Console.WriteLine(makeTitle());
-
             string[] options = { "Wpłać", "Wypłać", "Użytkownicy", "Wyjście" };
             switch (showOptions(options, "The Maze Runner"))
             {
                 case 0:
+
                     return;
          
                 case 1:
                     return;
                 case 2:
                     showUsers();
+                    Thread.Sleep(2000);
                     break;
                 case 3:
                     Exit();
@@ -34,9 +33,34 @@ namespace ATM
         }
         public static void showUsers()
         {
+            Console.Clear();
             Console.WriteLine(makeTitle());
             FileManager file = new FileManager();
-            file.WriteData();
+
+            UserData[] users = file.ReadData();
+            users = users.OrderBy(x => x.score).ToArray();
+
+            StringBuilder bob = new StringBuilder();
+            int i = 0;
+
+            foreach (var user in users)
+            {
+                bob.Append($"{i + 1}) {user.username}: {user.score}$\n");
+                i++;
+            }
+
+            bob.Append($"Back {EscapeColor.ColorRGB(0, 255, 0)}◄");
+            Console.WriteLine(bob.ToString());
+
+            while (true)
+            {
+                if(Console.ReadKey().Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                Console.SetCursorPosition(0, i+5);
+            }
+            showMainMenu();
 
         }
         private static int showOptions(string[] options, string title)

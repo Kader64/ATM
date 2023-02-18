@@ -9,32 +9,25 @@ namespace ATM
 {
     internal class FileManager
     {
-        public void WriteData()
+        private string path = "../../../../Saves/users.json";
+        public void WriteData(UserData[] data)
         {
-            var accounts = new[]
-{
-                new { Name = "Konto 1", Balance = 1000.0 },
-                new { Name = "Konto 2", Balance = 5000.0 },
-                new { Name = "Konto 3", Balance = 2000.0 },
-            };
-
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
             };
 
-            var json = JsonSerializer.Serialize(accounts, options);
+            var json = JsonSerializer.Serialize(data, options);
 
-            var filename = "../../../../Saves/users.json";
-            
-            File.WriteAllText(filename, json);
-
-            Console.WriteLine($"Zapisano {accounts.Length} kont do pliku {filename}");
+            File.WriteAllText(path, json);
+            Console.WriteLine($"Zapisano");
         }
 
-        public Object[] ReadData()
+        public UserData[] ReadData()
         {
-            return null;
+            string json = File.ReadAllText(path);
+            UserData[] data = JsonSerializer.Deserialize<UserData[]>(json);
+            return data;
         }
     }
 }

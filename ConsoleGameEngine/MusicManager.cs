@@ -8,14 +8,17 @@ namespace ConsoleGameEngine
     {
 
         private WaveOutEvent outputDevice;
+        private LoopingWaveStream loopingStream;
 
         public MusicManager(string path)
         {
             outputDevice = new WaveOutEvent();
-            outputDevice.Init(new AudioFileReader(path));
+            loopingStream = new LoopingWaveStream(new AudioFileReader(path));
+            outputDevice.Init(loopingStream);
         }
 
-        public void Play()
+
+        public void PlayLoop()
         {
             Thread musicThread = new Thread(() =>
             {

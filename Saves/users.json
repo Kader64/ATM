@@ -1,14 +1,14 @@
 [
   {
-    "Name": "Konto 1",
-    "Balance": 1000
+    "username": "Konto 1",
+    "score": 1000
   },
   {
-    "Name": "Konto 2",
-    "Balance": 5000
+    "username": "Konto 2",
+    "score": 5000
   },
   {
-    "Name": "Konto 3",
-    "Balance": 2000
+    "username": "Konto 3",
+    "score": 2000
   }
 ]

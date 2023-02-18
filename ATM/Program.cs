@@ -17,6 +17,11 @@ class Program
         Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
         ConsoleManager.SetConsoleFont(20, 40, 0, 0);
         Console.CursorVisible = false;
+
+        MusicManager music = new MusicManager("../../../../Assets/menuBG.mp3");
+        music.setVolume(0.1f);
+        music.PlayLoop();
+
         Menu.showMainMenu();
 
 
