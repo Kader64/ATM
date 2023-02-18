@@ -4,8 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATM", "ATM\ATM.csproj", "{B1E79891-EE69-4054-8AD8-7A69BE1EA16A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A97548B1-855B-47C2-A5DF-A9785A0B1D85} = {A97548B1-855B-47C2-A5DF-A9785A0B1D85}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGameEngine", "ConsoleGameEngine\ConsoleGameEngine.csproj", "{0B4401BD-30F5-4AF0-8343-D26087F5E52A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleGameEngine", "ConsoleGameEngine\ConsoleGameEngine.csproj", "{0B4401BD-30F5-4AF0-8343-D26087F5E52A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xMenu", "xMenu\xMenu.csproj", "{A97548B1-855B-47C2-A5DF-A9785A0B1D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B4401BD-30F5-4AF0-8343-D26087F5E52A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
