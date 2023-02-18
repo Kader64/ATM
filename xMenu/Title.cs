@@ -15,12 +15,12 @@ namespace xMenu
             Text = text;
         }
 
-        public Title(string text, string color, string aligment, string borderColor) : base(text, color, aligment)
+
+        public Title(string text, string color, string aligment = "center") : base(text, aligment, color)
         {
             Text = text;
             Color = color;
             Aligment = aligment;
-            BorderColor = borderColor;
         }
 
         public string Build()
@@ -29,7 +29,7 @@ namespace xMenu
             string span = new string(' ', (Console.BufferWidth - Text.Length-10) / 2);
             // POPRAWIĆ ALIGMENT
             bob.Append($"    {BorderColor}╔══════════════════════════════╗    \n");
-            bob.Append($"    {BorderColor}║{span}{Color}{Text}{span}{BorderColor}║\n");
+            bob.Append($"    {BorderColor}║{(Text.Length%2!=0?(span+" "):span)}{Color}{Text}{span}{BorderColor}║\n");
             bob.Append($"    {BorderColor}╚══════════════════════════════╝    ");
             return bob.ToString();
         }

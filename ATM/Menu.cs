@@ -10,65 +10,59 @@ namespace ATM
 {
     public static class Menu
     {
+        private static string FG_COLOR = EscapeColor.ColorRGB(0, 230, 230);
+        private static string POINTER_COLOR = EscapeColor.ColorRGB(0, 255, 0);
+        private static string TITLE_COLOR = EscapeColor.ColorRGB(0, 255, 0);
         public static void showMainMenu()
         {
-            string fgColor = EscapeColor.ColorRGB(0, 230, 230);
-
             MenuBuilder builder = new MenuBuilder();
-            builder.Add(new Title("A.T.M."));
-            builder.Add(new Option("Wpłać","center", fgColor, () =>
+            builder.Add(new Title("A.T.M.", TITLE_COLOR));
+            builder.Add(new Option("Wpłać","center", FG_COLOR, () =>
             {
-
+                // START GRY
                 return 0;
             }));
-            builder.Add(new Option("Wypłać", "center", fgColor, () =>
+            builder.Add(new Option("Wypłać", "center", FG_COLOR, () =>
             {
-
+                // NWM
                 return 0;
             }));
-            builder.Add(new Option("Użytkownicy", "center", fgColor, () =>
+            builder.Add(new Option("Użytkownicy", "center", FG_COLOR, () =>
             {
-
+                showUsers();
                 return 0;
             }));
-            builder.Add(new Option("Wyjście", "center", fgColor, () =>
+            builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
             {
                 Exit();
                 return 0;
             }));
-            builder.pointerColor = EscapeColor.ColorRGB(0, 255, 0);
+            builder.pointerColor = POINTER_COLOR;
             builder.run();
         }
         public static void showUsers()
         {
-            Console.Clear();
-            FileManager file = new FileManager();
+            MenuBuilder builder = new MenuBuilder();
+            builder.Add(new Title("Użytkownicy", TITLE_COLOR));
 
-            UserData[] users = file.ReadData();
-            users = users.OrderBy(x => x.score).ToArray();
-
-            StringBuilder bob = new StringBuilder();
+            FileManager fileManager = new FileManager();
+            var users = fileManager.ReadData();
+            users = users.OrderByDescending(x => x.score).ToArray();
             int i = 0;
-
-            foreach (var user in users)
+            while(i<10 && i<users.Length)
             {
-                bob.Append($"{i + 1}) {user.username}: {user.score}$\n");
+                builder.Add(new TextLine($"  {users[i].username}: {EscapeColor.ColorRGB(255, 204, 0)}{users[i].score}$"));
                 i++;
             }
 
-            bob.Append($"Back {EscapeColor.ColorRGB(0, 255, 0)}◄");
-            Console.WriteLine(bob.ToString());
-
-            while (true)
+            builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
             {
-                if(Console.ReadKey().Key == ConsoleKey.Enter)
-                {
-                    break;
-                }
-                Console.SetCursorPosition(0, i+5);
-            }
-            showMainMenu();
+                showMainMenu();
+                return 0;
+            }));
 
+            builder.pointerColor = POINTER_COLOR;
+            builder.run();
         }
         private static void Exit()
         {

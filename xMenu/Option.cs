@@ -20,7 +20,7 @@ namespace xMenu
             Text = Text;
             Aligment = Aligment;
             Color = Color;
-            OnSelect = OnSelect;
+            OnSelect = onSelect;
         }
 
         public string Build()
@@ -30,7 +30,7 @@ namespace xMenu
 
         public void Select()
         {
-            if(OnSelect != null)
+            if (OnSelect != null)
             {
                 OnSelect();
             }
