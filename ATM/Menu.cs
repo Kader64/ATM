@@ -48,10 +48,11 @@ namespace ATM
             FileManager fileManager = new FileManager();
             var users = fileManager.ReadData();
             users = users.OrderByDescending(x => x.score).ToArray();
-
-            foreach (var user in users)
+            int i = 0;
+            while(i<10 && i<users.Length)
             {
-                builder.Add(new TextLine($"  {user.username}: {EscapeColor.ColorRGB(255, 204, 0)}{user.score}$"));
+                builder.Add(new TextLine($"  {users[i].username}: {EscapeColor.ColorRGB(255, 204, 0)}{users[i].score}$"));
+                i++;
             }
 
             builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
