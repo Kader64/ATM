@@ -20,7 +20,6 @@ namespace ATM
             var json = JsonSerializer.Serialize(data, options);
 
             File.WriteAllText(path, json);
-            Console.WriteLine($"Zapisano");
         }
 
         public UserData[] ReadData()

@@ -49,14 +49,15 @@ namespace xMenu
                 for(int i = 0; i < Titles.Count; i++)
                 {
                     bob.Append(Titles[i].Build()+"\n");
+                    if(i == Titles.Count-1) bob.Append("\n");
                 }
-                bob.Append("\n");
+                
 
                 for(int i = 0; i < Textlines.Count; i++)
                 {
                     bob.Append(Textlines[i].Build()+"\n");
+                    if (i == Textlines.Count - 1) bob.Append("\n");
                 }
-                bob.Append("\n");
 
                 for (int i = 0; i < Options.Count; i++)
                 {
