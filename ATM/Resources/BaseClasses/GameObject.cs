@@ -9,45 +9,36 @@ namespace ATM.Resources.BaseClasses
 {
     public class GameObject
     {
-        protected int posX, posY;
-        protected int objW, objH;
-        protected string objColor;
+        public int PosX { get; set; }
+        public int PosY { get; set;}
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public string Color { get; set; }
+
+        public GameObject(int posX, int posY, int width, int height, string color)
+        {
+            PosX = posX;
+            PosY = posY;
+            Width = width;
+            Height = height;
+            Color = color;
+        }
 
         public GameObject(int posX, int posY)
         {
-            this.posX = posX;
-            this.posY = posY;
-        }
-
-        public int[] getSizes()
-        {
-            return new int[] { objW, objH };
+            PosX = posX;
+            PosY = posY;
         }
 
         public virtual void renderObject(ASCIICanvas canvas)
         {
-            canvas.fillStyle = this.objColor;
-            canvas.FillRect(posX, posY, objW, objH);
-        }
-
-        public int getX()
-        {
-            return posX;
-        }
-        public int getY()
-        {
-            return posY;
-        }
-
-        public void setPos(int x, int y)
-        {
-            posY = y;
-            posX = x;
+            canvas.fillStyle = Color;
+            canvas.FillRect(PosX, PosY, Width, Height);
         }
 
         public bool collides(Player player)
         {
-            if (player.getY() + player.getH() >= posY && player.getX() >= posX && player.getX() + player.getW() <= posX+objW && player.getY() < this.posY+this.objH)
+            if (player.PosY + player.Height >= PosY && player.PosX >= PosX && player.PosX + player.Width <= PosX + Width && player.PosY < PosY+Height)
             {
                 return true;
             }

@@ -12,11 +12,11 @@ namespace ATM.Resources.BaseClasses
 
         public CableHook(int posX, int posY) : base(posX, posY)
         {
-            objH = 5;
+/*            objH = 5;
             objW = 5;
             this.posX = posX;
             this.posY = posY;
-            this.objColor = EscapeColor.Color("Purple");
+            this.objColor = EscapeColor.Color("Purple");*/
         }
     }
 }

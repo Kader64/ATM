@@ -9,33 +9,32 @@ namespace ATM.Resources.BaseClasses
 {
     class Atm : GameObject
     {
-        public Atm(int posX, int posY) : base(posX, posY)
+        public Atm(int posX, int posY, int width, int height) : base(posX, posY)
         {
-            this.posX= posX;
-            this.posY= posY;
-
+            PosX = posX;
+            PosY = posY;
         }
 
         public override void renderObject(ASCIICanvas canvas)
         {
             canvas.fillStyle = EscapeColor.Color("White");
-            canvas.FillRect(posX, posY, 12, 20);
+            canvas.FillRect(PosX, PosY, 12, 20);
 
             canvas.fillStyle = EscapeColor.Color("Blue");
-            canvas.FillRect(posX+3, posY+6, 6,5);
+            canvas.FillRect(PosX+3, PosY + 6, 6,5);
 
             canvas.strokeStyle = EscapeColor.Color("Yellow");
-            canvas.StrokeRect(posX + 1, posY + 1, 10, 4);
+            canvas.StrokeRect(PosX + 1, PosY + 1, 10, 4);
 
             canvas.fillStyle = EscapeColor.Color("Black");
-            canvas.FillRect(posX + 2, posY + 2, 2, 2);
+            canvas.FillRect(PosX + 2, PosY + 2, 2, 2);
             canvas.fillStyle = EscapeColor.Color("Black");
-            canvas.FillRect(posX + 5, posY + 2, 2, 2);
+            canvas.FillRect(PosX + 5, PosY + 2, 2, 2);
             canvas.fillStyle = EscapeColor.Color("Black");
-            canvas.FillRect(posX + 8, posY + 2, 2, 2);
+            canvas.FillRect(PosX + 8, PosY + 2, 2, 2);
 
             canvas.fillStyle = EscapeColor.Color("Black");
-            canvas.FillRect(posX+2, posY + 12, 8, 4);
+            canvas.FillRect(PosX+2, PosY + 12, 8, 4);
 
         }
     }

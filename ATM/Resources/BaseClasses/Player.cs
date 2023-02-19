@@ -7,30 +7,16 @@ using System.Threading.Tasks;
 
 namespace ATM.Resources.BaseClasses
 {
-    public class Player
+    public class Player : GameObject
     {
 
-        private int posX,posY;
         public int jumps { get; set; }
         public int acc { get; set; }
-        private int playerW = 5, playerH = 10;
-        private string playerColor = EscapeColor.Color("Red");
 
-        public Player(int posX, int posY)
+        public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
         {
-            this.posX = posX;
-            this.posY = posY;
-            this.jumps = 0;
-        }
-        public int getX() { return posX; }
-        public int getY() { return posY;}
-        public int getW() { return playerW;}
-        public int getH() { return playerH;}
-
-        public void renderPlayer(ASCIICanvas canvas)
-        {
-            canvas.fillStyle= playerColor;
-            canvas.FillRect(posX, posY, playerW, playerH);
+            PosX = posX;
+            PosY = posY;
         }
 
         public void control()
@@ -39,7 +25,7 @@ namespace ATM.Resources.BaseClasses
             if (KeyboardManager.IsKeyPressed(Keys.A)) move(-2, 0);
             if (KeyboardManager.IsKeyPressed(Keys.Space) && jumps > 0 && acc >= 0)
             {
-                setPos(posX, posY - 5);
+                setPos(PosX, PosY - 5);
                 acc = -4;
                 jumps--;
             };
@@ -47,14 +33,14 @@ namespace ATM.Resources.BaseClasses
 
         public void setPos(int x, int y)
         {
-            this.posX = x;
-            this.posY = y;
+            PosX = x;
+            PosY = y;
         }
 
         public void move(int x, int y)
         {
-            this.posX += x;
-            this.posY += y;
+            PosX += x;
+            PosY += y;
         }
     }
 }

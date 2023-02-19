@@ -10,11 +10,11 @@ namespace ATM.Resources.BaseClasses
     {
         public Floor(int posX, int posY, int objW, int objH, string objColor) : base(posX, posY)
         {
-            this.objW = objW;
-            this.objH = objH;
-            this.posX = posX;
-            this.posY = posY;
-            this.objColor = objColor;
+            this.Width = objW;
+            this.Height = objH;
+            this.PosX = posX;
+            this.PosY = posY;
+            this.Color = objColor;
         }
     }
 

@@ -37,14 +37,15 @@ namespace ATM.Resources
         }
         private void Loop(CGE ge)
         {
-            player.renderPlayer(ge.canvas);
+            player.renderObject(ge.canvas);
+
             foreach (var ob in objects)
             {
                 ob.renderObject(ge.canvas);
+
                 if (!ob.collides(player))
                 {
                     player.move(0, player.acc);
-
                     if (player.acc < 3 && GRAVITY_TICK <= 0)
                     {   
                         player.acc += GRAVITY_POWER;
@@ -53,7 +54,7 @@ namespace ATM.Resources
                 }
                 else
                 {
-                    player.setPos(player.getX(), ob.getY() - player.getH());
+                    player.setPos(player.PosX, ob.PosY - player.Height);
                     player.jumps = 2;
                 }
             }
