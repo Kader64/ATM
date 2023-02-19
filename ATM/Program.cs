@@ -22,7 +22,7 @@ class Program
 
         MusicManager music = new MusicManager("../../../../Assets/menuBG.mp3");
         music.setVolume(0.1f);
-        music.PlayLoop();
+        //music.PlayLoop();
 
         Menu.showMainMenu();
     }

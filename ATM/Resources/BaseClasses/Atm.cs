@@ -9,7 +9,7 @@ namespace ATM.Resources.BaseClasses
 {
     class Atm : GameObject
     {
-        public Atm(int posX, int posY, int width, int height) : base(posX, posY)
+        public Atm(int posX, int posY) : base(posX, posY)
         {
             PosX = posX;
             PosY = posY;

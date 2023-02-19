@@ -32,6 +32,7 @@ namespace ATM.Resources
 
             objects.Add(new Floor(3, 140, 300, 2, EscapeColor.Color("White")));
             objects.Add(new Floor(3, 70, 150, 2, EscapeColor.Color("White")));
+            objects.Add(new Atm(200, 100));
 
             GameEngine.run();
         }
