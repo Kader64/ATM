@@ -45,9 +45,9 @@ namespace ATM.Resources.BaseClasses
             posX = x;
         }
 
-        public bool collides(int chkX, int chkY, int chkW, int chkH)
+        public bool collides(Player player)
         {
-            if (chkY + chkH >= posY && chkX >= posX && chkX + chkW <= posX+objW && chkY < this.posY+this.objH)
+            if (player.getY() + player.getH() >= posY && player.getX() >= posX && player.getX() + player.getW() <= posX+objW && player.getY() < this.posY+this.objH)
             {
                 return true;
             }

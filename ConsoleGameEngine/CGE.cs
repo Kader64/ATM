@@ -13,7 +13,7 @@ namespace ConsoleGameEngine
 
         private Timer gameTimer;
 
-        public Func<int> GameLogic;
+        public Action GameLogic;
 
         public int SleepTime = 10;
 
@@ -58,10 +58,5 @@ namespace ConsoleGameEngine
             //System.Threading.Thread.Sleep(SleepTime);
             internalGameLoop();
         }
-
-      
-
-                    
-
     }
 }

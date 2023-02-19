@@ -1,4 +1,5 @@
-﻿using ConsoleGameEngine;
+﻿using ATM.Resources;
+using ConsoleGameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace ATM
             builder.Add(new Title("A.T.M.", TITLE_COLOR));
             builder.Add(new Option("Wpłać","center", FG_COLOR, () =>
             {
-                // START GRY
+                Game game = new Game();
+                game.Start();
                 return 0;
             }));
             builder.Add(new Option("Wypłać", "center", FG_COLOR, () =>
