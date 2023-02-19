@@ -47,11 +47,7 @@ namespace ATM.Resources.BaseClasses
 
         public bool collides(int chkX, int chkY, int chkW, int chkH)
         {
-            //if (chkX > posX && chkX + chkW < posX && chkY + chkH >= posY)
-            //{
-            //    return true;
-            //}
-            if (chkY + chkH >= posY && chkX >= posX && chkX + chkW <= posX+objW)
+            if (chkY + chkH >= posY && chkX >= posX && chkX + chkW <= posX+objW && chkY < this.posY+this.objH)
             {
                 return true;
             }
