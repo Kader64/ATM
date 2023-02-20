@@ -34,6 +34,18 @@ namespace ATM.Resources.BaseClasses
             PosY += y;
         }
 
+        public override void Render(ASCIICanvas canvas)
+        {
+            canvas.fillStyle = Color;
+            canvas.FillRect(PosX, PosY, 5, 10);
+
+            canvas.fillStyle = EscapeColor.Color("Black");
+            canvas.FillRect(PosX+1, PosY+2, 1, 1);
+
+            canvas.fillStyle = EscapeColor.Color("Black");
+            canvas.FillRect(PosX+3, PosY+2, 1, 1);
+        }
+
         public void Control()
         {
             if (KeyboardManager.IsKeyPressed(Keys.D)) Move(2, 0);
