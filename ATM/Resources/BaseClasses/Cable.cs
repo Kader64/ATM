@@ -27,7 +27,7 @@ namespace ATM.Resources.BaseClasses
         public override void Render(ASCIICanvas canvas)
         {
             canvas.strokeStyle = Color;
-            canvas.strokeLine(PosX, PosY, EndX, EndY);
+            canvas.StrokeLine(PosX, PosY, EndX, EndY);
         }
     }
 }

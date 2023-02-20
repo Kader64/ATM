@@ -27,26 +27,32 @@ namespace ATM.Resources
             var GameEngine = new CGE();
             GameEngine.GameLogic = () => Loop(GameEngine);
 
-            world.WorldObjects.Add(new Floor(3, 140, 300, 2, EscapeColor.Color("White")));
-            world.WorldObjects.Add(new Floor(3, 70, 150, 2, EscapeColor.Color("White")));
-            world.WorldObjects.Add(new Hook(50, 50));
-            world.WorldObjects.Add(new Atm(200, 100));
+            world.WorldObjects.Add(new Floor(10, 100, 70, 1, EscapeColor.Color("White")));
+            //world.WorldObjects.Add(new Floor(225, 100, 70, 4, EscapeColor.Color("White")));
+            world.WorldObjects.Add(new Floor(100, 100, 70, 1, EscapeColor.Color("White")));
+
+            world.WorldObjects.Add(new Floor(200, 100, 70, 1, EscapeColor.Color("White")));
+            //world.WorldObjects.Add(new Floor(3, 140, 300, 4, EscapeColor.Color("White")));
+            //world.WorldObjects.Add(new Hook(50, 50));
+            world.WorldObjects.Add(new Atm(255, 80));
 
             GameEngine.run();
         }
         private void Loop(CGE ge)
         {
-            for(int i = 0; i < world.WorldObjects.Count; i++)
+
+            player.Render(ge.canvas);
+
+            for (int i = 0; i < world.WorldObjects.Count; i++)
             {
                 world.WorldObjects[i].Render(ge.canvas);
 
                 if (!player.Collides(world.WorldObjects[i]))
                 {
-                    player.Move(0, player.acc);
                     if (player.acc < 3 && world.GRAVITY_TICK <= 0)
                     {
                         player.acc += world.GRAVITY_POWER;
-                        world.GRAVITY_TICK = 3;
+                        world.GRAVITY_TICK = 2;
                     }
                 }
                 else
@@ -54,9 +60,11 @@ namespace ATM.Resources
                     world.WorldObjects[i].OnCollision(player);
                 }
             }
+
+            player.Move(0, player.acc);
+
             world.GRAVITY_TICK--;
 
-            player.Render(ge.canvas);
             player.Control();
         }
     }

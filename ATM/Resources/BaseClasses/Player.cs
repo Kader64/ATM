@@ -38,19 +38,19 @@ namespace ATM.Resources.BaseClasses
             if (KeyboardManager.IsKeyPressed(Keys.A)) Move(-2, 0);
             if (KeyboardManager.IsKeyPressed(Keys.Space) && jumps > 0 && acc >= 0)
             {
-                SetPos(PosX, PosY - 5);
-                acc = -3;
+                SetPos(PosX, PosY - 1);
+                acc = -5;
                 jumps--;
             };
         }
 
         public bool Collides(GameObject obj)
         {
-            if (PosX + Width >= obj.PosX && PosX <= obj.PosX + obj.Width &&
-                PosY + Height >= obj.PosY && PosY <= obj.PosY + obj.Height)
+            if (this.PosY + this.Height >= obj.PosY && (this.PosX <= obj.PosX + obj.Width && this.PosX+this.Width >= obj.PosX))
             {
                 return true;
             }
+ 
             return false;
         }
     }

@@ -33,12 +33,12 @@ namespace ConsoleGameEngine
             
         }
 
-        public void flushBuffer()
+        public void FlushBuffer()
         {
             buffer = new string[CanvasH, CanvasW];
         }
 
-        public void renderBuffer()
+        public void RenderBuffer()
         {
             Console.SetCursorPosition(0, 0);
             StringBuilder view = new StringBuilder();
@@ -57,7 +57,7 @@ namespace ConsoleGameEngine
         public void SetPoint(int x, int y, bool autoBufferRender = false)
         {
             buffer[y, x] = fillStyle + "█";
-            if (autoBufferRender) renderBuffer();
+            if (autoBufferRender) RenderBuffer();
         }
 
         public void FillRect(int x, int y, int w, int h, bool autoBufferRender = false)
@@ -70,7 +70,7 @@ namespace ConsoleGameEngine
                     buffer[y + rH, x + rW] = fillStyle + "█";
                 }
             }
-            if (autoBufferRender) renderBuffer();
+            if (autoBufferRender) RenderBuffer();
             if (fillStyle != "") fillStyle = "";
         }
 
@@ -84,11 +84,11 @@ namespace ConsoleGameEngine
                     if (rH == 0 || rW == 0 || rW == w - 1 || rH == h - 1) buffer[y + rH, x + rW] = strokeStyle + "█";
                 }
             }
-            if (autoBufferRender) renderBuffer();
+            if (autoBufferRender) RenderBuffer();
             if (strokeStyle != "") strokeStyle = "";
         }
 
-        public void strokeLine(int x1, int y1, int x2, int y2)
+        public void StrokeLine(int x1, int y1, int x2, int y2)
         {
             int w = x2 - x1;
             int h = y2 - y1;

@@ -12,7 +12,7 @@ class Program
 {
     static void Main(string[] args)
     {
-       
+
         Console.Title = "ATM";
         ConsoleManager.blockWindowResize();
         Console.SetWindowSize(40, 20);

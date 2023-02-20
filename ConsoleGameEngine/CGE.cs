@@ -40,7 +40,7 @@ namespace ConsoleGameEngine
         }
         private void internalGameLoop()
         {
-            canvas.flushBuffer();
+            canvas.FlushBuffer();
     
             GameLogic();
 
@@ -54,7 +54,7 @@ namespace ConsoleGameEngine
             }
 
 
-            canvas.renderBuffer();
+            canvas.RenderBuffer();
             //System.Threading.Thread.Sleep(SleepTime);
             internalGameLoop();
         }
