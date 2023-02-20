@@ -46,7 +46,7 @@ namespace ATM.Resources.BaseClasses
 
         public bool Collides(GameObject obj)
         {
-            if (this.PosY + this.Height >= obj.PosY && (this.PosX <= obj.PosX + obj.Width && this.PosX+this.Width >= obj.PosX))
+            if (this.PosY + this.Height >= obj.PosY && this.PosY <= obj.PosY && this.PosX <= obj.PosX + obj.Width && this.PosX+this.Width >= obj.PosX)
             {
                 return true;
             }
