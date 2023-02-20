@@ -11,15 +11,12 @@ namespace ATM.Resources
     internal class Game
     {
         private Player player;
-        private List<GameObject> objects;
-
-        private int GRAVITY_POWER = 1;
-        private int GRAVITY_TICK = 0;
+        public static World world = new World();
 
         public Game()
         {
-            this.player = new Player(20, 20);
-            this.objects = new List<GameObject>();
+            player = new Player(20, 20);
+            world = new World();
         }
 
         public void Start()
@@ -30,39 +27,37 @@ namespace ATM.Resources
             var GameEngine = new CGE();
             GameEngine.GameLogic = () => Loop(GameEngine);
 
-            objects.Add(new Floor(3, 140, 300, 2, EscapeColor.Color("White")));
-            objects.Add(new Floor(3, 70, 150, 2, EscapeColor.Color("White")));
-            objects.Add(new Atm(200, 100));
+            world.WorldObjects.Add(new Floor(3, 140, 300, 2, EscapeColor.Color("White")));
+            world.WorldObjects.Add(new Floor(3, 70, 150, 2, EscapeColor.Color("White")));
+            world.WorldObjects.Add(new Hook(50, 50));
+            world.WorldObjects.Add(new Atm(200, 100));
 
             GameEngine.run();
         }
         private void Loop(CGE ge)
         {
-            player.renderObject(ge.canvas);
-
-            foreach (var ob in objects)
+            for(int i = 0; i < world.WorldObjects.Count; i++)
             {
-                ob.renderObject(ge.canvas);
+                world.WorldObjects[i].Render(ge.canvas);
 
-                if (!ob.collides(player))
+                if (!player.Collides(world.WorldObjects[i]))
                 {
-                    player.move(0, player.acc);
-                    if (player.acc < 3 && GRAVITY_TICK <= 0)
-                    {   
-                        player.acc += GRAVITY_POWER;
-                        GRAVITY_TICK = 3;
+                    player.Move(0, player.acc);
+                    if (player.acc < 3 && world.GRAVITY_TICK <= 0)
+                    {
+                        player.acc += world.GRAVITY_POWER;
+                        world.GRAVITY_TICK = 3;
                     }
                 }
                 else
                 {
-                    player.setPos(player.PosX, ob.PosY - player.Height);
-                    player.jumps = 2;
+                    world.WorldObjects[i].OnCollision(player);
                 }
             }
+            world.GRAVITY_TICK--;
 
-
-            GRAVITY_TICK--;
-            player.control();
+            player.Render(ge.canvas);
+            player.Control();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ATM.Resources.BaseClasses
             PosY = posY;
         }
 
-        public override void renderObject(ASCIICanvas canvas)
+        public override void Render(ASCIICanvas canvas)
         {
             canvas.fillStyle = EscapeColor.Color("White");
             canvas.FillRect(PosX, PosY, 12, 20);
@@ -36,6 +36,16 @@ namespace ATM.Resources.BaseClasses
             canvas.fillStyle = EscapeColor.Color("Black");
             canvas.FillRect(PosX+2, PosY + 12, 8, 4);
 
+        }
+        public override void OnCollision(Player player)
+        {
+            if (player.CableSource != this)
+            {
+                var cable = new Cable(PosX, PosY, player.PosX, player.PosY);
+
+                player.CableSource = this;
+                Game.world.WorldObjects.Add(cable);
+            }
         }
     }
 }

@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace ATM.Resources.BaseClasses
 {
-    class Floor : GameObject
+    class Hook : GameObject
     {
-        public Floor(int posX, int posY, int objW, int objH, string objColor) : base(posX, posY)
-        {
-            this.Width = objW;
-            this.Height = objH;
-            this.PosX = posX;
-            this.PosY = posY;
-            this.Color = objColor;
-        }
 
+        public Hook(int posX, int posY) : base(posX, posY)
+        {
+            PosX = posX;
+            PosY = posY;
+            Width = 5;
+            Height = 5;
+            Color = EscapeColor.Color("Purple");
+        }
         public override void Render(ASCIICanvas canvas)
         {
             base.Render(canvas);
@@ -25,8 +25,7 @@ namespace ATM.Resources.BaseClasses
 
         public override void OnCollision(Player player)
         {
-            player.SetPos(player.PosX, PosY - player.Height);
-            player.jumps = 2;
+            base.OnCollision(player);
         }
     }
 }

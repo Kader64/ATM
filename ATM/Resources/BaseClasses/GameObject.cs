@@ -30,19 +30,15 @@ namespace ATM.Resources.BaseClasses
             PosY = posY;
         }
 
-        public virtual void renderObject(ASCIICanvas canvas)
+        public virtual void Render(ASCIICanvas canvas)
         {
             canvas.fillStyle = Color;
             canvas.FillRect(PosX, PosY, Width, Height);
         }
 
-        public bool collides(Player player)
+        public virtual void OnCollision(Player player)
         {
-            if (player.PosY + player.Height >= PosY && player.PosX >= PosX && player.PosX + player.Width <= PosX + Width && player.PosY < PosY+Height)
-            {
-                return true;
-            }
-            return false;
+
         }
     }
 }
