@@ -47,7 +47,7 @@ namespace ATM.Resources
 
                 if (!world.player.Collides(world.WorldObjects[i]))
                 {
-                    if (world.player.acc < 3 && world.GRAVITY_TICK <= 0)
+                    if (world.player.acc < world.player.MAX_ACC && world.GRAVITY_TICK <= 0)
                     {
                         world.player.acc += world.GRAVITY_POWER;
                         world.GRAVITY_TICK = 2;

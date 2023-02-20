@@ -14,6 +14,8 @@ namespace ATM.Resources.BaseClasses
         public int acc { get; set; }
         public Cable CableHeld { get; set; }
 
+        public readonly int MAX_ACC = 3;
+
         public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
         {
             PosX = posX;
