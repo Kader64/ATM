@@ -41,7 +41,7 @@ namespace ATM.Resources.BaseClasses
         {
             if (player.CableSource != this)
             {
-                var cable = new Cable(PosX, PosY, player.PosX, player.PosY);
+                var cable = new Cable(PosX, PosY);
 
                 player.CableSource = this;
                 Game.world.WorldObjects.Add(cable);

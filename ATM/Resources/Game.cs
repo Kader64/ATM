@@ -10,12 +10,10 @@ namespace ATM.Resources
 {
     internal class Game
     {
-        private Player player;
         public static World world = new World();
 
         public Game()
         {
-            player = new Player(20, 20);
             world = new World();
         }
 
@@ -41,31 +39,31 @@ namespace ATM.Resources
         private void Loop(CGE ge)
         {
 
-            player.Render(ge.canvas);
+            world.player.Render(ge.canvas);
 
             for (int i = 0; i < world.WorldObjects.Count; i++)
             {
                 world.WorldObjects[i].Render(ge.canvas);
 
-                if (!player.Collides(world.WorldObjects[i]))
+                if (!world.player.Collides(world.WorldObjects[i]))
                 {
-                    if (player.acc < 3 && world.GRAVITY_TICK <= 0)
+                    if (world.player.acc < 3 && world.GRAVITY_TICK <= 0)
                     {
-                        player.acc += world.GRAVITY_POWER;
+                        world.player.acc += world.GRAVITY_POWER;
                         world.GRAVITY_TICK = 2;
                     }
                 }
                 else
                 {
-                    world.WorldObjects[i].OnCollision(player);
+                    world.WorldObjects[i].OnCollision(world.player);
                 }
             }
 
-            player.Move(0, player.acc);
+            world.player.Move(0, world.player.acc);
 
             world.GRAVITY_TICK--;
 
-            player.Control();
+            world.player.Control();
         }
     }
 }

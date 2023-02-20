@@ -10,7 +10,7 @@ namespace ATM.Resources.BaseClasses
     {
         public int GRAVITY_POWER = 1;
         public int GRAVITY_TICK = 0;
+        public Player player = new Player(20, 20);
         public List<GameObject> WorldObjects = new List<GameObject>();
-
     }
 }
