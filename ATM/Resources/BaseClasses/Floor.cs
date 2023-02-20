@@ -25,7 +25,7 @@ namespace ATM.Resources.BaseClasses
 
         public override void OnCollision(Player player)
         {
-            player.SetPos(player.PosX, this.PosY - player.Height);
+            player.SetPos(player.PosX, this.PosY - player.Height - 3);
             player.jumps = 2;
         }
     }
