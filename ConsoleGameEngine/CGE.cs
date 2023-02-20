@@ -11,7 +11,7 @@ namespace ConsoleGameEngine
 
         public ASCIICanvas canvas;
 
-        private Timer gameTimer;
+        private Timer runtime;
 
         public Action GameLogic;
 
@@ -35,7 +35,8 @@ namespace ConsoleGameEngine
 
         public void run()
         {
-            Console.Title = "FPS: " + frames;
+            runtime = new Timer();
+            Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
             internalGameLoop();
         }
         private void internalGameLoop()
@@ -44,12 +45,11 @@ namespace ConsoleGameEngine
     
             GameLogic();
 
-
             frames++;
             if (t1.Second - DateTime.Now.Second < 0)
             {
                 t1 = DateTime.Now;
-                Console.Title = "FPS: " + frames;
+                Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
                 frames = 0;
             }
 
