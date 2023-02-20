@@ -9,10 +9,9 @@ namespace ATM.Resources.BaseClasses
 {
     public class Cable : GameObject
     {
-        public Cable(int startX, int startY) : base(startX, startY)
+        public GameObject Target { get; set; }
+        public Cable(GameObject source) : base(source.PosX+source.Width/2, source.PosY+source.Height/2)
         {
-            PosX = startX;
-            PosY = startY;
             Color = EscapeColor.Color("Blue");
         }
 
@@ -24,7 +23,7 @@ namespace ATM.Resources.BaseClasses
         public override void Render(ASCIICanvas canvas)
         {
             canvas.strokeStyle = Color;
-            canvas.StrokeLine(PosX, PosY, Game.world.player.PosX, Game.world.player.PosY);
+            canvas.StrokeLine(PosX, PosY, Target.PosX + Target.Width / 2, Target.PosY + Target.Height / 2);
         }
     }
 }

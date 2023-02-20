@@ -13,6 +13,8 @@ namespace ATM.Resources.BaseClasses
         {
             PosX = posX;
             PosY = posY;
+            Width = 12;
+            Height = 20;
         }
 
         public override void Render(ASCIICanvas canvas)
@@ -39,11 +41,12 @@ namespace ATM.Resources.BaseClasses
         }
         public override void OnCollision(Player player)
         {
-            if (player.CableSource != this)
+            if (player.CableHeld == null)
             {
-                var cable = new Cable(PosX, PosY);
+                var cable = new Cable(this);
 
-                player.CableSource = this;
+                player.CableHeld = cable;
+                player.CableHeld.Target = player;
                 Game.world.WorldObjects.Add(cable);
             }
         }

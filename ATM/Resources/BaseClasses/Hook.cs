@@ -25,7 +25,7 @@ namespace ATM.Resources.BaseClasses
 
         public override void OnCollision(Player player)
         {
-            base.OnCollision(player);
+
         }
     }
 }

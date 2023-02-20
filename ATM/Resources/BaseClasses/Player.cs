@@ -12,7 +12,7 @@ namespace ATM.Resources.BaseClasses
 
         public int jumps { get; set; }
         public int acc { get; set; }
-        public GameObject CableSource { get; set; }
+        public Cable CableHeld { get; set; }
 
         public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
         {
