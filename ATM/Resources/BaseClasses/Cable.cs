@@ -10,9 +10,11 @@ namespace ATM.Resources.BaseClasses
     public class Cable : GameObject
     {
         public GameObject Target { get; set; }
+        public GameObject Source { get; set; }
         public Cable(GameObject source) : base(source.PosX+source.Width/2, source.PosY+source.Height/2)
         {
-            Color = EscapeColor.Color("Blue");
+            Source = source;
+            Color = EscapeColor.Color("Teal");
         }
 
         public override void OnCollision(Player player)

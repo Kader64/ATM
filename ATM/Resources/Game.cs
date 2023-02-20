@@ -31,16 +31,14 @@ namespace ATM.Resources
 
             world.WorldObjects.Add(new Floor(200, 100, 70, 1, EscapeColor.Color("White")));
             //world.WorldObjects.Add(new Floor(3, 140, 300, 4, EscapeColor.Color("White")));
-            //world.WorldObjects.Add(new Hook(50, 50));
+            world.WorldObjects.Add(new Hook(50, 50));
+            world.WorldObjects.Add(new Plug(100, 60));
             world.WorldObjects.Add(new Atm(255, 80));
 
             GameEngine.run();
         }
         private void Loop(CGE ge)
         {
-
-            world.player.Render(ge.canvas);
-
             for (int i = 0; i < world.WorldObjects.Count; i++)
             {
                 world.WorldObjects[i].Render(ge.canvas);
@@ -64,6 +62,8 @@ namespace ATM.Resources
             world.GRAVITY_TICK--;
 
             world.player.Control();
+
+            world.player.Render(ge.canvas);
         }
     }
 }
