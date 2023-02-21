@@ -17,16 +17,21 @@ namespace ATM
         public static void showMainMenu()
         {
             MenuBuilder builder = new MenuBuilder();
+
             builder.Add(new Title("A.T.M.", TITLE_COLOR));
             builder.Add(new Option("Wpłać","center", FG_COLOR, () =>
             {
+                LoadingPage loading = new LoadingPage();
+                loading.Run();
+
                 Game game = new Game();
                 game.Start();
                 return 0;
             }));
             builder.Add(new Option("Wypłać", "center", FG_COLOR, () =>
             {
-                // NWM
+                Game game = new Game();
+                game.Start();
                 return 0;
             }));
             builder.Add(new Option("Użytkownicy", "center", FG_COLOR, () =>
@@ -39,6 +44,7 @@ namespace ATM
                 Exit();
                 return 0;
             }));
+
             builder.pointerColor = POINTER_COLOR;
             builder.run();
         }
