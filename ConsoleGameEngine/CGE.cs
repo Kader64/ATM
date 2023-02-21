@@ -20,6 +20,7 @@ namespace ConsoleGameEngine
         private const int WINDOW_HEIGHT = 150;
         private const int WINDOW_WIDTH = 300;
 
+        private bool isRunning = false;
 
         private int frames;
 
@@ -37,7 +38,13 @@ namespace ConsoleGameEngine
         {
             runtime = new Timer();
             Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
+            isRunning= true;
             internalGameLoop();
+        }
+
+        public void stop()
+        {
+            isRunning= false;
         }
         private void internalGameLoop()
         {
@@ -56,7 +63,7 @@ namespace ConsoleGameEngine
 
             canvas.RenderBuffer();
             //System.Threading.Thread.Sleep(SleepTime);
-            internalGameLoop();
+            if(isRunning) internalGameLoop();
         }
     }
 }
