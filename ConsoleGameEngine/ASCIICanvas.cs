@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 using System.Text;
 
 namespace ConsoleGameEngine
@@ -15,6 +16,9 @@ namespace ConsoleGameEngine
 
         private string[,] buffer;
 
+        private StringBuilder view;
+        private StringBuilder row;
+
         public ASCIICanvas(int w, int h)
         {
 
@@ -30,7 +34,10 @@ namespace ConsoleGameEngine
             Console.SetBufferSize(w+1,h+1);
             Console.SetWindowSize(w+5,h+5);
             ConsoleManager.blockWindowResize();
-            
+
+            view = new StringBuilder();
+            row = new StringBuilder();
+
         }
 
         public void FlushBuffer()
@@ -40,18 +47,19 @@ namespace ConsoleGameEngine
 
         public void RenderBuffer()
         {
+            view.Clear();
+            row.Clear();
             Console.SetCursorPosition(0, 0);
-            StringBuilder view = new StringBuilder();
             for (int y = 0; y < CanvasH; y++)
             {
-                string xLine = "";
+                row.Clear();
                 for (int x = 0; x < CanvasW; x++)
                 {
-                    xLine += buffer[y, x] != null ? buffer[y, x] : " ";
+                    row.Append(buffer[y, x] != null ? buffer[y, x] : " ");
                 }
-                view.AppendLine(xLine);
+                view.AppendLine(row.ToString());
             }
-            Console.WriteLine(view.ToString());
+            Console.Write(view.ToString());
         }
 
         public void SetPoint(int x, int y, bool autoBufferRender = false)
