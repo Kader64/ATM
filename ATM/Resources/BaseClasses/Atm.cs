@@ -48,6 +48,7 @@ namespace ATM.Resources.BaseClasses
                 player.CableHeld = cable;
                 player.CableHeld.Target = player;
                 Game.world.WorldObjects.Add(cable);
+
             }
         }
     }
