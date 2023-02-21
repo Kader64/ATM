@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using Microsoft.VisualBasic.Devices;
 
 namespace ATM.Resources.BaseClasses
 {
@@ -27,34 +28,21 @@ namespace ATM.Resources.BaseClasses
 
         public bool ChkIntersect(GameObject obj)
         {
+            if (obj is Hook || obj is Atm || obj is Player || obj is Cable)
+            {
+                return false;
+            }
 
-            if (obj is Hook || obj is Atm || obj is Player || obj is Cable) return false;
+            var a = new Point(Target.PosX, Target.PosY);
+            var b = new Point(Source.PosX, Source.PosY);
+            var r = new Rectangle(obj.PosX, obj.PosY, obj.Width, obj.Height - 14);
 
-            var a = new Point();
-            a.X = Target.PosX;
-            a.Y = Target.PosY;
+            if (a.Y < r.Y) return false;
 
-            var b = new Point();
-            b.X = Source.PosX;
-            b.Y = Source.PosY;
-
-            var r = new Rectangle();
-            r.X = obj.PosX;
-            r.Y = obj.PosY;
-
-            r.Height = obj.Height;
-            r.Width = obj.Width-14;
-
-            if (Math.Min(a.X, b.X) > r.Right) return false;  
-            if (Math.Max(a.X, b.X) < r.Left) return false;  
-            if (Math.Min(a.Y, b.Y) > r.Bottom) return false;   
-            if (Math.Max(a.Y, b.Y) < r.Top) return false;  
-
-            if (r.Contains(a)) return true; 
-            if (r.Contains(b)) return true;  
-
-            return true;
+            return r.IntersectsWith(new Rectangle(Math.Min(a.X, b.X), Math.Min(a.Y, b.Y), Math.Abs(a.X - b.X), Math.Abs(a.Y - b.Y)));
         }
+
+
 
         public override void Render(ASCIICanvas canvas)
         {

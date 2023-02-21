@@ -27,7 +27,7 @@ namespace ATM.Resources
 
             world.WorldObjects.Add(new Floor(10, 100, 70, 2, EscapeColor.Color("White")));
 
-            world.WorldObjects.Add(new Floor(185, 60, 4, 43, EscapeColor.Color("White")));
+            world.WorldObjects.Add(new Floor(185, 60, 5, 43, EscapeColor.Color("White")));
 
             //world.WorldObjects.Add(new Floor(225, 100, 70, 4, EscapeColor.Color("White")));
             world.WorldObjects.Add(new Floor(100, 100, 70, 2, EscapeColor.Color("White")));
