@@ -7,29 +7,26 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameEngine
 {
-    public class LoopingWaveStream : WaveStream
+    internal class LoopStream : WaveStream
     {
-        private WaveStream sourceStream;
+        private readonly WaveStream sourceStream;
 
-        public LoopingWaveStream(WaveStream sourceStream)
+        public LoopStream(WaveStream sourceStream)
         {
             this.sourceStream = sourceStream;
+            this.EnableLooping = true;
         }
 
-        public override WaveFormat WaveFormat
-        {
-            get { return sourceStream.WaveFormat; }
-        }
+        public bool EnableLooping { get; set; }
 
-        public override long Length
-        {
-            get { return long.MaxValue; }
-        }
+        public override WaveFormat WaveFormat => sourceStream.WaveFormat;
+
+        public override long Length => sourceStream.Length;
 
         public override long Position
         {
-            get { return sourceStream.Position; }
-            set { sourceStream.Position = value; }
+            get => sourceStream.Position;
+            set => sourceStream.Position = value;
         }
 
         public override int Read(byte[] buffer, int offset, int count)
@@ -42,6 +39,11 @@ namespace ConsoleGameEngine
 
                 if (bytesRead == 0)
                 {
+                    if (sourceStream.Position == 0 || !EnableLooping)
+                    {
+                        break;
+                    }
+
                     sourceStream.Position = 0;
                 }
 

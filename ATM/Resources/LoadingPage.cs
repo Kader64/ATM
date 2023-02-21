@@ -1,9 +1,4 @@
 ﻿using ConsoleGameEngine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ATM.Resources
 {
@@ -30,6 +25,8 @@ namespace ATM.Resources
         {
             showLoadingScreen();
             Console.Clear();
+
+            Console.WriteLine();
             generateText($"  {EscapeColor.Color("Yellow")}Ty: {EscapeColor.Color("White")}Co się stało,\n  czemu bankomat nie działa?\n");
             generateText($"  {EscapeColor.Color("Yellow")}Starsza Pani: {EscapeColor.Color("White")}Chłopcze pospiesz się,\n  muszę wypłacić pieniądze!\n");
             generateText($"  {EscapeColor.Color("Yellow")}Nieznajomy: {EscapeColor.Color("White")}Wtyczka wypadła,\n  podnieś ją i podłącz do gniazdka...\n");

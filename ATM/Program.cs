@@ -1,11 +1,5 @@
 ﻿using ATM;
 using ConsoleGameEngine;
-using System.Runtime.InteropServices;
-using ConsoleGameEngine;
-using ATM.Resources.BaseClasses;
-using System.Threading;
-
-
 
 
 class Program
@@ -20,9 +14,7 @@ class Program
         ConsoleManager.SetConsoleFont(20, 40, 0, 0);
         Console.CursorVisible = false;
 
-        MusicManager music = new MusicManager("../../../../Assets/menuBG.mp3");
-        music.setVolume(0.1f);
-        //music.PlayLoop();
+        SoundManager.Music.PlayLoop(Sound.MUSIC_MENU);
 
         Menu.showMainMenu();
     }
