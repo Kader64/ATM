@@ -9,7 +9,7 @@ namespace ATM
 {
     internal class FileManager
     {
-        private string path = "../../../../Saves/users.json";
+        private string path = "../../../Resources/Assets/Saves/users.json";
         public void WriteData(UserData[] data)
         {
             var options = new JsonSerializerOptions
