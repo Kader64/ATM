@@ -53,6 +53,7 @@ namespace ATM
             MenuBuilder builder = new MenuBuilder();
             builder.Add(new Title("Użytkownicy", TITLE_COLOR));
 
+            Console.ForegroundColor = ConsoleColor.Red;
             FileManager fileManager = new FileManager();
             var users = fileManager.ReadData();
             users = users.OrderByDescending(x => x.score).ToArray();

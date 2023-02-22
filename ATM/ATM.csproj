@@ -23,4 +23,8 @@
     <ProjectReference Include="..\xMenu\xMenu.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Assets\Saves\" />
+  </ItemGroup>
+
 </Project>
