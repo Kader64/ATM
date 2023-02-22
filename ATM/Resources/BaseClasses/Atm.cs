@@ -26,16 +26,14 @@ namespace ATM.Resources.BaseClasses
             canvas.FillRect(PosX+3, PosY + 6, 6,5);
 
             canvas.strokeStyle = EscapeColor.Color("Yellow");
-            canvas.StrokeRect(PosX + 1, PosY + 1, 10, 4);
+            canvas.StrokeRect(PosX+1, PosY + 1, 10, 4);
 
             canvas.fillStyle = EscapeColor.Color("Black");
             canvas.FillRect(PosX + 2, PosY + 2, 2, 2);
-            canvas.fillStyle = EscapeColor.Color("Black");
             canvas.FillRect(PosX + 5, PosY + 2, 2, 2);
-            canvas.fillStyle = EscapeColor.Color("Black");
             canvas.FillRect(PosX + 8, PosY + 2, 2, 2);
 
-            canvas.fillStyle = EscapeColor.Color("Black");
+
             canvas.FillRect(PosX+2, PosY + 12, 8, 4);
 
         }
@@ -47,7 +45,7 @@ namespace ATM.Resources.BaseClasses
 
                 player.CableHeld = cable;
                 player.CableHeld.Target = player;
-                Game.world.WorldObjects.Add(cable);
+                Game.world.WorldObjects.Insert(0,cable);
 
             }
         }

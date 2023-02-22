@@ -32,7 +32,7 @@ namespace ATM.Resources.BaseClasses
             var cable = new Cable(this);
             player.CableHeld = cable;
             player.CableHeld.Target = player;
-            Game.world.WorldObjects.Add(cable);
+            Game.world.WorldObjects.Insert(0,cable);
         }
     }
 }

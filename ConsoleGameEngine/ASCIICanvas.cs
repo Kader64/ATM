@@ -15,6 +15,7 @@ namespace ConsoleGameEngine
         public string strokeStyle;
 
         private string[,] buffer;
+        private string[,] escapeCodes;
 
         private StringBuilder view;
         private StringBuilder row;
@@ -43,6 +44,7 @@ namespace ConsoleGameEngine
         public void FlushBuffer()
         {
             buffer = new string[CanvasH, CanvasW];
+            escapeCodes = new string[CanvasH, CanvasW];
         }
 
         public void RenderBuffer()
@@ -55,6 +57,8 @@ namespace ConsoleGameEngine
                 row.Clear();
                 for (int x = 0; x < CanvasW; x++)
                 {
+                    if (x == 0) row.Append(escapeCodes[y, x]);
+                    else if (escapeCodes[y, x] != escapeCodes[y, x - 1]) row.Append(escapeCodes[y, x]);
                     row.Append(buffer[y, x] != null ? buffer[y, x] : " ");
                 }
                 view.AppendLine(row.ToString());
@@ -75,11 +79,11 @@ namespace ConsoleGameEngine
                 for (int rW = 0; rW < w; rW++)
                 {
                     if (y + rH >= CanvasH || x + rW >= CanvasW || x + rW < 0 || y + rH < 0) continue;
-                    buffer[y + rH, x + rW] = fillStyle + "█";
+                    buffer[y + rH, x + rW] = "█";
+                    escapeCodes[y + rH, x + rW] = fillStyle;
                 }
             }
             if (autoBufferRender) RenderBuffer();
-            if (fillStyle != "") fillStyle = "";
         }
 
         public void StrokeRect(int x, int y, int w, int h, bool autoBufferRender = false)
@@ -89,11 +93,14 @@ namespace ConsoleGameEngine
                 for (int rW = 0; rW < w; rW++)
                 {
                     if (y + rH >= CanvasH || x + rW >= CanvasW || x + rW < 0 || y + rH < 0) continue;
-                    if (rH == 0 || rW == 0 || rW == w - 1 || rH == h - 1) buffer[y + rH, x + rW] = strokeStyle + "█";
+                    if (rH == 0 || rW == 0 || rW == w - 1 || rH == h - 1) 
+                    {
+                        buffer[y + rH, x + rW] = "█";
+                        escapeCodes[y + rH, x + rW] = strokeStyle;
+                    } 
                 }
             }
             if (autoBufferRender) RenderBuffer();
-            if (strokeStyle != "") strokeStyle = "";
         }
 
         public void StrokeLine(int x1, int y1, int x2, int y2)
