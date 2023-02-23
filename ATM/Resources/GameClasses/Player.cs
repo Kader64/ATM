@@ -18,7 +18,11 @@ namespace ATM.Resources.BaseClasses
         public int Jumps = 1;
 
 
-        private int MaxJumpSpeed = 5;
+        private int MaxJumpSpeed = 8;
+
+        public int acc = 0;
+
+        public bool isColiding = false;
 
         public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
         {
@@ -27,10 +31,16 @@ namespace ATM.Resources.BaseClasses
             vector = new Vector(0, 0);
         }
 
-        public void Move(Vector vector)
+        public void Move(int x, int y)
         {
-            PosX += vector.X;
-            PosY += vector.Y;
+            PosX += x;
+            PosY += y;
+        }
+
+        public void SetPos(int x, int y)
+        {
+            PosX = x;
+            PosY = y;
         }
 
         public override void Render(ASCIICanvas canvas)
@@ -51,31 +61,24 @@ namespace ATM.Resources.BaseClasses
             {
                 if (KeyboardManager.IsKeyPressed(Keys.A))
                 {
-                    vector.X = -1;
+                    PosX += -1;
                 }
                 else
                 {
-                    vector.X = 1;
+                    PosX += 1;
                 }
             }
-            else
-            {
-                vector.X = 0;
-            }
 
-            if (KeyboardManager.IsKeyPressed(Keys.Space) && Jumps > 0)
+            if (KeyboardManager.IsKeyPressed(Keys.Space) && Jumps >= 0 && acc >= 0)
             {
-                vector.Y = -MaxJumpSpeed;
+                isColiding = false;
+                acc = -MaxJumpSpeed;
                 Jumps--;
             }
 
-            if(Game.world.GRAVITY_TICK == 0 && vector.Y < MaxJumpSpeed)
-            {
-                vector.Y += 1;
-            }
+            if (acc < 3 && !isColiding) acc++;
 
-
-            Move(vector);
+            PosY += acc;
         }
 
         public bool Collides(GameObject obj)

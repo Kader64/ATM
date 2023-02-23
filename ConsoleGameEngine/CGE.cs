@@ -42,7 +42,7 @@ namespace ConsoleGameEngine
             runtime = new Timer();
             Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
             stopwatch.Start();
-            isRunning= true;
+            isRunning = true;
             internalGameLoop();
         }
 
