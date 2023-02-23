@@ -1,5 +1,4 @@
-﻿using ATM.Resources.GameClasses;
-using ConsoleGameEngine;
+﻿using ConsoleGameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;

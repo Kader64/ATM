@@ -1,5 +1,4 @@
 ﻿using ATM.Resources.BaseClasses;
-using ATM.Resources.GameClasses;
 using ConsoleGameEngine;
 
 namespace ATM.Resources

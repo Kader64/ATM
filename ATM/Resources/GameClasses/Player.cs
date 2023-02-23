@@ -1,5 +1,4 @@
-﻿using ATM.Resources.GameClasses;
-using ConsoleGameEngine;
+﻿using ConsoleGameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,6 @@ namespace ATM.Resources.BaseClasses
         public readonly int MAX_ACC = 3;
 
         public Cable CableHeld { get; set; }
-        public Vector vector { get; set; }
 
         public int Jumps = 1;
 
@@ -28,7 +26,6 @@ namespace ATM.Resources.BaseClasses
         {
             PosX = posX;
             PosY = posY;
-            vector = new Vector(0, 0);
         }
 
         public void Move(int x, int y)
