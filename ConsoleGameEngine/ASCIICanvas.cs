@@ -27,6 +27,7 @@ namespace ConsoleGameEngine
             CanvasW = w + 1;
 
             buffer = new string[CanvasH, CanvasW];
+            escapeCodes = new string[CanvasH, CanvasW];
 
             fillStyle = EscapeColor.Color("White");
             strokeStyle = EscapeColor.Color("White");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace ConsoleGameEngine
 
         public Action GameLogic;
 
-        public int SleepTime = 10;
+        public int TimeStep = 20;
 
         private const int WINDOW_HEIGHT = 150;
         private const int WINDOW_WIDTH = 300;
@@ -25,12 +26,14 @@ namespace ConsoleGameEngine
         private int frames;
 
         private DateTime t1;
+        private Stopwatch stopwatch;
 
         public CGE() 
         { 
         
             canvas = new ASCIICanvas(WINDOW_WIDTH,WINDOW_HEIGHT);
             t1 = DateTime.Now;
+            stopwatch = new Stopwatch();
         
         }
 
@@ -38,6 +41,7 @@ namespace ConsoleGameEngine
         {
             runtime = new Timer();
             Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
+            stopwatch.Start();
             isRunning= true;
             internalGameLoop();
         }
@@ -48,9 +52,14 @@ namespace ConsoleGameEngine
         }
         private void internalGameLoop()
         {
-            canvas.FlushBuffer();
-    
-            GameLogic();
+
+            if (stopwatch.ElapsedMilliseconds > TimeStep)
+            {
+                canvas.FlushBuffer();
+                GameLogic();
+                stopwatch.Restart();
+            }
+
 
             frames++;
             if (t1.Second - DateTime.Now.Second < 0)
@@ -62,7 +71,6 @@ namespace ConsoleGameEngine
 
 
             canvas.RenderBuffer();
-            //System.Threading.Thread.Sleep(SleepTime);
             if(isRunning) internalGameLoop();
         }
     }
