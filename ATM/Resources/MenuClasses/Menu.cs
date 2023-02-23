@@ -72,6 +72,45 @@ namespace ATM
             builder.pointerColor = POINTER_COLOR;
             builder.run();
         }
+
+        public static void showNextLevelMenu(int lvl, string time,int points)
+        {
+            Console.Clear();
+
+            SoundManager.Music.Stop();
+            Console.SetWindowSize(40, 20);
+            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
+            ConsoleManager.SetConsoleFont(20, 40, 0, 0);
+            LoadingPage loadingPage = new LoadingPage();
+
+            loadingPage.showLoadingScreen();
+
+            MenuBuilder builder = new MenuBuilder();
+
+            builder.Add(new TextLine($"\n   Ukończono z czasem: {EscapeColor.Color("Yellow")}{time}"));
+
+            builder.Add(new TextLine($"   Ilość zdobytych punktów: {EscapeColor.Color("Yellow")}{points}"));
+
+            builder.Add(new TextLine("\n\n\n"));
+
+            builder.Add(new Title("POZIOM "+lvl+" ZAKOŃCZONY!", TITLE_COLOR));
+
+            builder.Add(new Option("Następny", "center", FG_COLOR, () =>
+            {
+                loadingPage.showLoadingScreen();
+                // NEXT LEVEL
+                return 0;
+            }));
+
+            builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
+            {
+                Exit();
+                return 0;
+            }));
+
+            builder.pointerColor = POINTER_COLOR;
+            builder.run();
+        }
         private static void Exit()
         {
             Console.Clear();

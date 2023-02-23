@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleGameEngine
 {
-    internal class Timer
+    public class Timer
     {
 
         private DateTime initTime;

@@ -35,21 +35,24 @@ namespace ATM.Resources
 
             showLoadingScreen();
         }
-        private void showLoadingScreen()
+        public void showLoadingScreen()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Random rnd = new Random();
-            for (int i = 0; i < 1500; i++)
+            for (int i = 0; i < 1200; i++)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
-
+                Console.Write(getRandomChar());
+                Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(getRandomChar());
                 Thread.Sleep(1);
             }
 
-            for (int i = 0; i < 1500; i++)
+            for (int i = 0; i < 1200; i++)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
-
+                Console.Write(" ");
+                Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(" ");
                 Thread.Sleep(1);
             }
