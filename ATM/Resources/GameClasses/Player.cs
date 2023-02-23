@@ -10,12 +10,15 @@ namespace ATM.Resources.BaseClasses
 {
     public class Player : GameObject
     {
-        public int acc { get; set; }
-        public int jumps { get; set; }
         public readonly int MAX_ACC = 3;
 
         public Cable CableHeld { get; set; }
         public Vector vector { get; set; }
+
+        public int Jumps = 1;
+
+
+        private int MaxJumpSpeed = 5;
 
         public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
         {
@@ -60,13 +63,16 @@ namespace ATM.Resources.BaseClasses
                 vector.X = 0;
             }
 
-            if (KeyboardManager.IsKeyPressed(Keys.Space) && jumps > 0 && acc >= 0)
+            if (KeyboardManager.IsKeyPressed(Keys.Space) && Jumps > 0)
             {
-                PosY -= 1;
-                acc = -5;
-                jumps--;
+                vector.Y = -MaxJumpSpeed;
+                Jumps--;
             }
 
+            if(Game.world.GRAVITY_TICK == 0 && vector.Y < MaxJumpSpeed)
+            {
+                vector.Y += 1;
+            }
 
 
             Move(vector);
@@ -81,5 +87,6 @@ namespace ATM.Resources.BaseClasses
  
             return false;
         }
+
     }
 }

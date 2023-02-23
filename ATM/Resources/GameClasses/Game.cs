@@ -56,24 +56,18 @@ namespace ATM.Resources
                     if (world.player.CableHeld.ChkIntersect(world.WorldObjects[i])) world.WorldObjects[i].Color = EscapeColor.Random();
                 }
 
-                if (!world.player.Collides(world.WorldObjects[i]))
-                {
-                    if (world.player.acc < world.player.MAX_ACC && world.GRAVITY_TICK <= 0)
-                    {
-                        world.player.acc += world.GRAVITY_POWER;
-                        world.GRAVITY_TICK = 2;
-                    }
-                }
-                else
+                if (world.player.Collides(world.WorldObjects[i]))
                 {
                     world.WorldObjects[i].OnCollision(world.player);
                 }
             }
-            var vector = new Vector(world.player.vector.X, world.player.acc);
 
-            //world.player.Move(vector);
+            world.GRAVITY_TICK++;
 
-            world.GRAVITY_TICK--;
+            if(world.GRAVITY_TICK == 4)
+            {
+                world.GRAVITY_TICK = 0;
+            }
 
             world.player.Control();
 

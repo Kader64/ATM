@@ -26,14 +26,23 @@ namespace ATM.Resources.BaseClasses
 
         public override void OnCollision(Player player)
         {
-            if(player.PosY + player.Height == PosY || player.PosY == PosY + Height)
+
+            if (player.PosY + player.Height >= PosY && player.PosY + player.Height <= PosY + Height && player.vector.Y > 0)
             {
-                player.Move(player.vector.getOpositeY());
+                var vec = player.vector.getOpositeY();
+                vec.Y -= player.PosY + player.Height - PosY;
+                player.Move(vec);
+                player.Jumps = 1;
+                return;
             }
-            else
+            if (player.PosY >= PosY && player.PosY <= PosY + Height && player.vector.Y < 0)
             {
-                player.Move(player.vector.getOpositeX());
+                var vec = player.vector.getOpositeY();
+                vec.Y += player.PosY - PosY + Height;
+                player.Move(vec);
+                return;
             }
+            player.Move(player.vector.getOpositeX());
         }
     }
 }
