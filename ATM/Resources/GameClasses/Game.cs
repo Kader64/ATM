@@ -41,7 +41,7 @@ namespace ATM.Resources
 
             world.WorldObjects.Add(new Hook(90, 130));
 
-            world.WorldObjects.Add(new Atm(100, 80));
+            world.WorldObjects.Add(new Atm(255, 80));
 
             GameEngine.run();
         }

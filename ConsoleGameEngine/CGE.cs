@@ -12,7 +12,7 @@ namespace ConsoleGameEngine
 
         public ASCIICanvas canvas;
 
-        public Timer runtime;
+        private Timer runtime;
 
         public Action GameLogic;
 
