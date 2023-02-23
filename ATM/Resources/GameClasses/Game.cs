@@ -7,6 +7,7 @@ namespace ATM.Resources
     internal class Game
     {
         public static World world = new World();
+        public static CGE GameEngine = new CGE();
 
         public Game()
         {
@@ -20,7 +21,6 @@ namespace ATM.Resources
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
 
-            var GameEngine = new CGE();
             GameEngine.GameLogic = () => Loop(GameEngine);
 
             world.WorldObjects.Add(new Surface(10, 100, 70, 2, EscapeColor.Color("White")));
@@ -41,7 +41,7 @@ namespace ATM.Resources
 
             world.WorldObjects.Add(new Hook(90, 130));
 
-            world.WorldObjects.Add(new Atm(255, 80));
+            world.WorldObjects.Add(new Atm(100, 80));
 
             GameEngine.run();
         }

@@ -26,7 +26,9 @@ namespace ATM.Resources.BaseClasses
             if (player.CableHeld == null) return;
             player.CableHeld.Target = this;
             player.CableHeld = null;
-            // END GAME
+
+            Game.GameEngine.stop();
+            Menu.showNextLevelMenu(1, "2:00", 100);
         }
     }
 }
