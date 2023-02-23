@@ -1,4 +1,5 @@
-﻿using ConsoleGameEngine;
+﻿using ATM.Resources.GameClasses;
+using ConsoleGameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +10,24 @@ namespace ATM.Resources.BaseClasses
 {
     public class Player : GameObject
     {
-
-        public int jumps { get; set; }
         public int acc { get; set; }
-        public Cable CableHeld { get; set; }
-
+        public int jumps { get; set; }
         public readonly int MAX_ACC = 3;
+
+        public Cable CableHeld { get; set; }
+        public Vector vector { get; set; }
 
         public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
         {
             PosX = posX;
             PosY = posY;
+            vector = new Vector(0, 0);
         }
 
-        public void SetPos(int x, int y)
+        public void Move(Vector vector)
         {
-            PosX = x;
-            PosY = y;
-        }
-
-        public void Move(int x, int y)
-        {
-            PosX += x;
-            PosY += y;
+            PosX += vector.X;
+            PosY += vector.Y;
         }
 
         public override void Render(ASCIICanvas canvas)
@@ -48,14 +44,32 @@ namespace ATM.Resources.BaseClasses
 
         public void Control()
         {
-            if (KeyboardManager.IsKeyPressed(Keys.D)) Move(2, 0);
-            if (KeyboardManager.IsKeyPressed(Keys.A)) Move(-2, 0);
+            if (KeyboardManager.IsKeyPressed(Keys.D) || KeyboardManager.IsKeyPressed(Keys.A))
+            {
+                if (KeyboardManager.IsKeyPressed(Keys.A))
+                {
+                    vector.X = -1;
+                }
+                else
+                {
+                    vector.X = 1;
+                }
+            }
+            else
+            {
+                vector.X = 0;
+            }
+
             if (KeyboardManager.IsKeyPressed(Keys.Space) && jumps > 0 && acc >= 0)
             {
-                SetPos(PosX, PosY - 1);
+                PosY -= 1;
                 acc = -5;
                 jumps--;
-            };
+            }
+
+
+
+            Move(vector);
         }
 
         public bool Collides(GameObject obj)

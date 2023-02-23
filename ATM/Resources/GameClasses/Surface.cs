@@ -1,4 +1,5 @@
-﻿using ConsoleGameEngine;
+﻿using ATM.Resources.GameClasses;
+using ConsoleGameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ATM.Resources.BaseClasses
 {
-    class Floor : GameObject
+    class Surface : GameObject
     {
-        public Floor(int posX, int posY, int objW, int objH, string objColor) : base(posX, posY)
+        public Surface(int posX, int posY, int objW, int objH, string objColor) : base(posX, posY)
         {
             this.Width = objW;
             this.Height = objH;
@@ -25,8 +26,14 @@ namespace ATM.Resources.BaseClasses
 
         public override void OnCollision(Player player)
         {
-            player.SetPos(player.PosX, this.PosY - player.Height - Game.world.player.MAX_ACC);
-            player.jumps = 2;
+            if(player.PosY + player.Height == PosY || player.PosY == PosY + Height)
+            {
+                player.Move(player.vector.getOpositeY());
+            }
+            else
+            {
+                player.Move(player.vector.getOpositeX());
+            }
         }
     }
 }
