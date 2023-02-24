@@ -27,7 +27,6 @@ namespace ATM.Resources.BaseClasses
             player.CableHeld.Target = this;
             player.CableHeld = null;
 
-            Game.GameEngine.stop();
             Menu.showNextLevelMenu(1, "2:00", 100);
         }
     }

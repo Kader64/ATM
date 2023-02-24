@@ -2,27 +2,20 @@
 
 namespace ATM.Resources
 {
-    internal class LoadingPage
+    internal static class LoadingPage
     {
 
-        public void Run()
+        public static void RunIntro()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            FirstStage();
-        }
-        private void FirstStage()
-        {
+
             generateText("   Nazwa Konta: ");
             string name = Console.ReadLine();
 
             generateText("   Kwota: ");
             Console.ReadLine();
 
-            SecondStage();
-        }
-        private void SecondStage()
-        {
             showLoadingScreen();
             Console.Clear();
 
@@ -34,12 +27,13 @@ namespace ATM.Resources
             generateText($"  {EscapeColor.Color("Yellow")}Ty: {EscapeColor.Color("White")}Dobrze dobrze, zajmę się tym!\n");
 
             showLoadingScreen();
+
         }
-        public void showLoadingScreen()
+        public static void showLoadingScreen()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Random rnd = new Random();
-            for (int i = 0; i < 1200; i++)
+            for (int i = 0; i < 300; i++)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(getRandomChar());
@@ -48,7 +42,7 @@ namespace ATM.Resources
                 Thread.Sleep(1);
             }
 
-            for (int i = 0; i < 1200; i++)
+            for (int i = 0; i < 300; i++)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(" ");
@@ -57,7 +51,7 @@ namespace ATM.Resources
                 Thread.Sleep(1);
             }
         }
-        private char getRandomChar()
+        private static char getRandomChar()
         {
             Random rnd = new Random();
 
@@ -65,7 +59,7 @@ namespace ATM.Resources
             char randomChar = (char) asciiValue;
             return randomChar;
         }
-        private void generateText(string text)
+        private static void generateText(string text)
         {
             Console.WriteLine();
             foreach (char a in text)

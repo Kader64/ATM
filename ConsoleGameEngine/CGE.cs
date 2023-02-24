@@ -30,16 +30,13 @@ namespace ConsoleGameEngine
 
         public CGE() 
         { 
-        
             canvas = new ASCIICanvas(WINDOW_WIDTH,WINDOW_HEIGHT);
             t1 = DateTime.Now;
             stopwatch = new Stopwatch();
-        
+            runtime = new Timer();
         }
-
         public void run()
         {
-            runtime = new Timer();
             Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
             stopwatch.Start();
             isRunning = true;

@@ -21,17 +21,13 @@ namespace ATM
             builder.Add(new Title("A.T.M.", TITLE_COLOR));
             builder.Add(new Option("Wpłać","center", FG_COLOR, () =>
             {
-                LoadingPage loading = new LoadingPage();
-                loading.Run();
-
-                Game game = new Game();
-                game.Start();
+                LoadingPage.RunIntro();
+                Game.Init();
                 return 0;
             }));
             builder.Add(new Option("Wypłać", "center", FG_COLOR, () =>
             {
-                Game game = new Game();
-                game.Start();
+                Game.Init();
                 return 0;
             }));
             builder.Add(new Option("Użytkownicy", "center", FG_COLOR, () =>
@@ -76,14 +72,14 @@ namespace ATM
         public static void showNextLevelMenu(int lvl, string time,int points)
         {
             Console.Clear();
+            Game.GameEngine.stop();
 
             SoundManager.Music.Stop();
             Console.SetWindowSize(40, 20);
             Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
             ConsoleManager.SetConsoleFont(20, 40, 0, 0);
-            LoadingPage loadingPage = new LoadingPage();
 
-            loadingPage.showLoadingScreen();
+            LoadingPage.showLoadingScreen();
 
             MenuBuilder builder = new MenuBuilder();
 
@@ -97,8 +93,8 @@ namespace ATM
 
             builder.Add(new Option("Następny", "center", FG_COLOR, () =>
             {
-                loadingPage.showLoadingScreen();
-                // NEXT LEVEL
+                LoadingPage.showLoadingScreen();
+                Game.StartNextLevel();
                 return 0;
             }));
 

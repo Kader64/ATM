@@ -3,24 +3,30 @@ using ConsoleGameEngine;
 
 namespace ATM.Resources
 {
-    internal class Game
+    public static class Game
     {
-        public static World world = new World();
-        public static CGE GameEngine = new CGE();
+        public static World world;
+        public static CGE GameEngine;
 
-        public Game()
+        public static void Init()
         {
             world = new World();
-        }
-
-        public void Start()
-        {
-            SoundManager.Music.PlayLoop(Sound.MUSIC_GAME);
-
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
+            GameEngine = new CGE();
 
             GameEngine.GameLogic = () => Loop(GameEngine);
+            StartNextLevel();
+        }
+
+        public static void StartNextLevel()
+        {
+            Console.Clear();
+            GameEngine.canvas.SetupConsole();
+            SoundManager.Music.PlayLoop(Sound.MUSIC_GAME);
+            Console.ForegroundColor = ConsoleColor.White;
+            world = new World();
+
+            // READ FROM FILE
+            // ADD To WORLD
 
             world.WorldObjects.Add(new Surface(10, 100, 70, 2, EscapeColor.Color("White")));
 
@@ -44,7 +50,8 @@ namespace ATM.Resources
 
             GameEngine.run();
         }
-        private void Loop(CGE ge)
+
+        private static void Loop(CGE ge)
         {
             for (int i = 0; i < world.WorldObjects.Count; i++)
             {
