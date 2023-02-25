@@ -15,7 +15,7 @@ namespace ATM.Resources.GameClasses
 
             Width = 4;
             Height = height;
-            Color = EscapeColor.Color("Teal");
+            Color = EscapeColor.Color("Green");
             PosX = posX;
             PosY= posY;
 

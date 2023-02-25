@@ -25,18 +25,19 @@ namespace ConsoleGameEngine
 
         private int frames;
 
-        private DateTime t1;
+        private Stopwatch fpsTimer;
         private Stopwatch stopwatch;
 
         public CGE() 
         { 
             canvas = new ASCIICanvas(WINDOW_WIDTH,WINDOW_HEIGHT);
-            t1 = DateTime.Now;
             stopwatch = new Stopwatch();
             runtime = new Timer();
+            fpsTimer = new Stopwatch();
         }
         public void run()
         {
+            fpsTimer.Start();
             Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
             stopwatch.Start();
             isRunning = true;
@@ -45,7 +46,12 @@ namespace ConsoleGameEngine
 
         public void stop()
         {
-            isRunning= false;
+            isRunning = false;
+            stopwatch.Stop();
+            fpsTimer.Reset();
+            fpsTimer.Stop();
+
+            Console.Title = "";
         }
         private void internalGameLoop()
         {
@@ -59,9 +65,9 @@ namespace ConsoleGameEngine
 
 
             frames++;
-            if (t1.Second - DateTime.Now.Second < 0)
+            if (fpsTimer.ElapsedMilliseconds >= 1000)
             {
-                t1 = DateTime.Now;
+                fpsTimer.Restart();
                 Console.Title = "FPS: " + frames + " | " + runtime.GetElapsed();
                 frames = 0;
             }
