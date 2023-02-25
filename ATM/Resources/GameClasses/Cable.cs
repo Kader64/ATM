@@ -29,7 +29,7 @@ namespace ATM.Resources.BaseClasses
 
         public bool ChkIntersect(GameObject obj)
         {
-            if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder || obj is Trapdoor)
+            if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder || obj is Trapdoor || obj is Plug)
             {
                 return false;
             }
