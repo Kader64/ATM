@@ -27,21 +27,6 @@ namespace ATM.Resources.BaseClasses
             base.OnCollision(player);
         }
 
-        //public bool ChkIntersect(GameObject obj)
-        //{
-        //    if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder || obj is Trapdoor)
-        //    {
-        //        return false;
-        //    }
-
-        //    var a = new Point(Target.PosX, Target.PosY);
-        //    var b = new Point(Source.PosX, Source.PosY);
-        //    var r = new Rectangle(obj.PosX, obj.PosY, obj.Width, obj.Height - 14);
-
-        //    if (a.Y < r.Y) return false;
-
-        //    return r.IntersectsWith(new Rectangle(Math.Min(a.X, b.X), Math.Min(a.Y, b.Y), Math.Abs(a.X - b.X), Math.Abs(a.Y - b.Y)));
-        //}
         public bool ChkIntersect(GameObject obj)
         {
             if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder || obj is Trapdoor)
