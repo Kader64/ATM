@@ -1,5 +1,6 @@
 ﻿using ATM;
 using ATM.Resources;
+using ATM.Resources.BaseClasses;
 using ConsoleGameEngine;
 
 

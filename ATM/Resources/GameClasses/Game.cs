@@ -43,6 +43,8 @@ namespace ATM.Resources
 
             world.WorldObjects.Add(new Atm(255, 80));
 
+            world.WorldObjects.Add(new Ladder(30, 20, 80));
+
             GameEngine.run();
         }
         private void Loop(CGE ge)
@@ -62,6 +64,7 @@ namespace ATM.Resources
                 }
                 else
                 {
+                    world.player.affByGravity = true;
                     world.player.isColiding = false;
                 }
             }
