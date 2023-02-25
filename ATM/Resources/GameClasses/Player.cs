@@ -21,8 +21,8 @@ namespace ATM.Resources.BaseClasses
         public int acc = 0;
 
         public bool isColiding = false;
-
-        public Player(int posX, int posY) : base(posX, posY)
+        public bool affByGravity = true;
+        public Player(int posX, int posY)
         {
             PosX = posX;
             PosY = posY;
@@ -57,6 +57,13 @@ namespace ATM.Resources.BaseClasses
 
         public void Control()
         {
+
+            if(!affByGravity && (KeyboardManager.IsKeyPressed(Keys.W) || KeyboardManager.IsKeyPressed(Keys.S)))
+            {
+                if (KeyboardManager.IsKeyPressed(Keys.W)) PosY -= 1;
+                else PosY += 1;
+            }
+
             if (KeyboardManager.IsKeyPressed(Keys.D) || KeyboardManager.IsKeyPressed(Keys.A))
             {
                 if (KeyboardManager.IsKeyPressed(Keys.A))
@@ -78,7 +85,7 @@ namespace ATM.Resources.BaseClasses
 
             if (acc < 3 && !isColiding) acc++;
 
-            PosY += acc;
+            if(affByGravity) PosY += acc;
         }
 
         public bool Collides(GameObject obj)
