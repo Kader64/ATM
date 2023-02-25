@@ -25,28 +25,7 @@ namespace ATM.Resources
             Console.ForegroundColor = ConsoleColor.White;
             world = new World();
 
-            // READ FROM FILE
-            // ADD To WORLD
-
-            world.WorldObjects.Add(new Surface(10, 100, 70, 2, EscapeColor.Color("White")));
-
-            world.WorldObjects.Add(new Surface(185, 60, 5, 43, EscapeColor.Color("White")));
-
-            world.WorldObjects.Add(new Surface(100, 100, 70, 2, EscapeColor.Color("White")));
-
-            world.WorldObjects.Add(new Surface(0, 148, 300, 2, EscapeColor.Color("White")));
-
-            world.WorldObjects.Add(new Surface(200, 100, 70, 2, EscapeColor.Color("White")));
-
-            world.WorldObjects.Add(new Plug(255, 130));
-
-            world.WorldObjects.Add(new Hook(90, 60));
-
-            world.WorldObjects.Add(new Hook(181, 50));
-
-            world.WorldObjects.Add(new Hook(90, 130));
-
-            world.WorldObjects.Add(new Atm(255, 80));
+            world.WorldObjects = FileManager.ReadGameObjectsData(1).ToList();
 
             GameEngine.run();
         }

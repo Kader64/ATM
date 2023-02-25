@@ -1,0 +1,67 @@
+[
+  {
+    "Type": "Surface",
+    "PosX": 10,
+    "PosY": 100,
+    "Width": 70,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 185,
+    "PosY": 60,
+    "Width": 5,
+    "Height": 43,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 100,
+    "PosY": 100,
+    "Width": 70,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 0,
+    "PosY": 148,
+    "Width": 300,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 200,
+    "PosY": 100,
+    "Width": 70,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Plug",
+    "PosX": 255,
+    "PosY": 130
+  },
+  {
+    "Type": "Hook",
+    "PosX": 90,
+    "PosY": 60
+  },
+  {
+    "Type": "Hook",
+    "PosX": 181,
+    "PosY": 50
+  },
+  {
+    "Type": "Hook",
+    "PosX": 90,
+    "PosY": 130
+  },
+  {
+    "Type": "Atm",
+    "PosX": 255,
+    "PosY": 80
+  }
+]

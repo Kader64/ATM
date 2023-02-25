@@ -49,8 +49,7 @@ namespace ATM
             MenuBuilder builder = new MenuBuilder();
             builder.Add(new Title("Użytkownicy", TITLE_COLOR));
 
-            FileManager fileManager = new FileManager();
-            var users = fileManager.ReadData();
+            var users = FileManager.ReadUsersData();
             users = users.OrderByDescending(x => x.score).ToArray();
             int i = 0;
             while(i<10 && i<users.Length)

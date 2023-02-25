@@ -18,6 +18,7 @@ namespace ATM.Resources.BaseClasses
             Height = 5;
             Color = EscapeColor.Color("Purple");
         }
+
         public override void Render(ASCIICanvas canvas)
         {
             base.Render(canvas);

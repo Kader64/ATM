@@ -9,6 +9,7 @@ namespace ATM.Resources.BaseClasses
 {
     public class Plug : GameObject
     {
+
         public Plug(int posX, int posY) : base(posX, posY)
         {
             Width = 5;

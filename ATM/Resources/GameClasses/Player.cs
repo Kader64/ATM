@@ -22,10 +22,13 @@ namespace ATM.Resources.BaseClasses
 
         public bool isColiding = false;
 
-        public Player(int posX, int posY) : base(posX, posY, 5, 10, EscapeColor.Color("Red"))
+        public Player(int posX, int posY) : base(posX, posY)
         {
             PosX = posX;
             PosY = posY;
+            Width = 5;
+            Height = 20;
+            Color = EscapeColor.Color("Red");
         }
 
         public void Move(int x, int y)
