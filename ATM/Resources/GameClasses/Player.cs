@@ -22,12 +22,12 @@ namespace ATM.Resources.BaseClasses
 
         public bool isColiding = false;
         public bool affByGravity = true;
-        public Player(int posX, int posY)
+        public Player(int posX, int posY) : base(posX, posY)
         {
             PosX = posX;
             PosY = posY;
             Width = 5;
-            Height = 20;
+            Height = 10;
             Color = EscapeColor.Color("Red");
         }
 
@@ -46,7 +46,7 @@ namespace ATM.Resources.BaseClasses
         public override void Render(ASCIICanvas canvas)
         {
             canvas.fillStyle = Color;
-            canvas.FillRect(PosX, PosY, 5, 10);
+            canvas.FillRect(PosX, PosY, 5, Height);
 
             canvas.fillStyle = EscapeColor.Color("Black");
             canvas.FillRect(PosX+1, PosY+2, 1, 1);

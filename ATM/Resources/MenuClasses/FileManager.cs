@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using ATM.Resources.BaseClasses;
 using ConsoleGameEngine;
+using ATM.Resources.GameClasses;
 
 namespace ATM
 {
@@ -46,6 +47,7 @@ namespace ATM
                     case "Atm": go = new Atm(objects[i].PosX, objects[i].PosY); break;
                     case "Hook": go = new Hook(objects[i].PosX, objects[i].PosY); break;
                     case "Plug": go = new Plug(objects[i].PosX, objects[i].PosY); break;
+                    case "Ladder": go = new Ladder(objects[i].PosX, objects[i].PosY, objects[i].Height); break;
                     case "Surface": go = new Surface(objects[i].PosX, objects[i].PosY, objects[i].Width, objects[i].Height, objects[i].Color); break;
                 }
                 gameObjects[i] = go;

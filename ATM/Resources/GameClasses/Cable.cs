@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using Microsoft.VisualBasic.Devices;
+using ATM.Resources.GameClasses;
 
 namespace ATM.Resources.BaseClasses
 {
@@ -28,7 +29,7 @@ namespace ATM.Resources.BaseClasses
 
         public bool ChkIntersect(GameObject obj)
         {
-            if (obj is Hook || obj is Atm || obj is Player || obj is Cable)
+            if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder)
             {
                 return false;
             }

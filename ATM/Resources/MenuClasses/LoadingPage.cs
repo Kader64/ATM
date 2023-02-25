@@ -33,7 +33,7 @@ namespace ATM.Resources
         {
             Console.ForegroundColor = ConsoleColor.White;
             Random rnd = new Random();
-            for (int i = 0; i < 300; i++)
+            for (int i = 0; i < 1200; i++)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(getRandomChar());
@@ -42,7 +42,7 @@ namespace ATM.Resources
                 Thread.Sleep(1);
             }
 
-            for (int i = 0; i < 300; i++)
+            for (int i = 0; i < 1200; i++)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(" ");

@@ -63,5 +63,11 @@
     "Type": "Atm",
     "PosX": 255,
     "PosY": 80
+  },
+  {
+    "Type": "Ladder",
+    "PosX": 100,
+    "PosY": 80,
+    "Height": 50
   }
 ]

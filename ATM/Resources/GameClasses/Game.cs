@@ -27,8 +27,6 @@ namespace ATM.Resources
 
             world.WorldObjects = FileManager.ReadGameObjectsData(1).ToList();
 
-            world.WorldObjects.Add(new Ladder(30, 20, 80));
-
             GameEngine.run();
         }
 
