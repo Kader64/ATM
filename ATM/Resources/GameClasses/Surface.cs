@@ -32,7 +32,7 @@ namespace ATM.Resources.BaseClasses
                 player.SetPos(PosX - player.Width - 1, player.PosY);
                 return;
             }
-            else if (player.PosX >= this.PosX + this.Width)
+            else if (player.PosX >= PosX + Width)
             {
                 player.SetPos(PosX + Width + 1, player.PosY);
                 return;
