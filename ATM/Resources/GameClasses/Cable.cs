@@ -27,28 +27,79 @@ namespace ATM.Resources.BaseClasses
             base.OnCollision(player);
         }
 
+        //public bool ChkIntersect(GameObject obj)
+        //{
+        //    if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder || obj is Trapdoor)
+        //    {
+        //        return false;
+        //    }
+
+        //    var a = new Point(Target.PosX, Target.PosY);
+        //    var b = new Point(Source.PosX, Source.PosY);
+        //    var r = new Rectangle(obj.PosX, obj.PosY, obj.Width, obj.Height - 14);
+
+        //    if (a.Y < r.Y) return false;
+
+        //    return r.IntersectsWith(new Rectangle(Math.Min(a.X, b.X), Math.Min(a.Y, b.Y), Math.Abs(a.X - b.X), Math.Abs(a.Y - b.Y)));
+        //}
         public bool ChkIntersect(GameObject obj)
         {
-            if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder)
+            if (obj is Hook || obj is Atm || obj is Player || obj is Cable || obj is Ladder || obj is Trapdoor)
             {
                 return false;
             }
 
-            var a = new Point(Target.PosX, Target.PosY);
-            var b = new Point(Source.PosX, Source.PosY);
-            var r = new Rectangle(obj.PosX, obj.PosY, obj.Width, obj.Height - 14);
+            int x1 = Source.PosX + Source.Width / 2;
+            int y1 = Source.PosY + Source.Height / 2;
 
-            if (a.Y < r.Y) return false;
+            int x2 = Target.PosX + Target.Width / 2;
+            int y2 = Target.PosY + Target.Height / 2;
 
-            return r.IntersectsWith(new Rectangle(Math.Min(a.X, b.X), Math.Min(a.Y, b.Y), Math.Abs(a.X - b.X), Math.Abs(a.Y - b.Y)));
+            int w = x2 - x1;
+            int h = y2 - y1;
+            int dx1 = 0, dy1 = 0, dx2 = 0, dy2 = 0;
+            if (w < 0) dx1 = -1; else if (w > 0) dx1 = 1;
+            if (h < 0) dy1 = -1; else if (h > 0) dy1 = 1;
+            if (w < 0) dx2 = -1; else if (w > 0) dx2 = 1;
+            int longest = Math.Abs(w);
+            int shortest = Math.Abs(h);
+            if (!(longest > shortest))
+            {
+                longest = Math.Abs(h);
+                shortest = Math.Abs(w);
+                if (h < 0) dy2 = -1; else if (h > 0) dy2 = 1;
+                dx2 = 0;
+            }
+            int numerator = longest >> 1;
+            for (int i = 0; i <= longest; i++)
+            {
+                if (x1 >= obj.PosX && x1 <= obj.PosX + obj.Width && y1 >= obj.PosY && y1 <= obj.PosY + obj.Height) return true;
+                numerator += shortest;
+                if (!(numerator < longest))
+                {
+                    numerator -= longest;
+                    x1 += dx1;
+                    y1 += dy1;
+                }
+                else
+                {
+                    x1 += dx2;
+                    y1 += dy2;
+                }
+            }
+
+            return false;
         }
 
 
+        
 
         public override void Render(ASCIICanvas canvas)
         {
             canvas.strokeStyle = Color;
+            canvas.Brush = '■';
             canvas.StrokeLine(PosX, PosY, Target.PosX + Target.Width / 2, Target.PosY + Target.Height / 2);
+            canvas.ResetBrush();
         }
 
     }

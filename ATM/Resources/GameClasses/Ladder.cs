@@ -23,14 +23,20 @@ namespace ATM.Resources.GameClasses
 
         public override void Render(ASCIICanvas canvas)
         {
+
+            canvas.Brush = '║';
+
             canvas.fillStyle = Color;
             canvas.FillRect(PosX, PosY, 1, Height);
             canvas.FillRect(PosX+Width, PosY, 1, Height);
 
-            for(int y = PosY + 2; y < PosY + Height; y+=5)
+            canvas.Brush = '═';
+            for (int y = PosY + 2; y < PosY + Height; y+=5)
             {
-                canvas.FillRect(PosX, y, 4, 1);
+                canvas.FillRect(PosX+1, y, 3, 1);
             }
+
+            canvas.ResetBrush();
         }
 
         public override void OnCollision(Player player)

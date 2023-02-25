@@ -38,7 +38,7 @@ namespace ATM.Resources
 
                 if(world.player.CableHeld != null)
                 {
-                    if (world.player.CableHeld.ChkIntersect(world.WorldObjects[i])) ge.stop();
+                    if (world.player.CableHeld.ChkIntersect(world.WorldObjects[i])) world.WorldObjects[i].Color = EscapeColor.Random();
                 }
 
                 if (world.player.Collides(world.WorldObjects[i]))

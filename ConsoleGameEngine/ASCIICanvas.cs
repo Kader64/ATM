@@ -20,11 +20,15 @@ namespace ConsoleGameEngine
         private StringBuilder view;
         private StringBuilder row;
 
+        public char Brush { get; set; }
+
         public ASCIICanvas(int w, int h)
         {
 
             CanvasH = h + 1;
             CanvasW = w + 1;
+
+            Brush = '█';
 
             buffer = new string[CanvasH, CanvasW];
             escapeCodes = new string[CanvasH, CanvasW];
@@ -37,6 +41,11 @@ namespace ConsoleGameEngine
             view = new StringBuilder();
             row = new StringBuilder();
 
+        }
+
+        public void ResetBrush()
+        {
+            Brush = '█';
         }
         public void SetupConsole()
         {
@@ -72,7 +81,7 @@ namespace ConsoleGameEngine
 
         public void SetPoint(int x, int y, bool autoBufferRender = false)
         {
-            buffer[y, x] = fillStyle + "█";
+            buffer[y, x] = fillStyle + Brush;
             if (autoBufferRender) RenderBuffer();
         }
 
@@ -83,7 +92,7 @@ namespace ConsoleGameEngine
                 for (int rW = 0; rW < w; rW++)
                 {
                     if (y + rH >= CanvasH || x + rW >= CanvasW || x + rW < 0 || y + rH < 0) continue;
-                    buffer[y + rH, x + rW] = "█";
+                    buffer[y + rH, x + rW] = Char.ToString(Brush);
                     escapeCodes[y + rH, x + rW] = fillStyle;
                 }
             }
@@ -99,7 +108,7 @@ namespace ConsoleGameEngine
                     if (y + rH >= CanvasH || x + rW >= CanvasW || x + rW < 0 || y + rH < 0) continue;
                     if (rH == 0 || rW == 0 || rW == w - 1 || rH == h - 1) 
                     {
-                        buffer[y + rH, x + rW] = "█";
+                        buffer[y + rH, x + rW] = Char.ToString(Brush);
                         escapeCodes[y + rH, x + rW] = strokeStyle;
                     } 
                 }
@@ -128,7 +137,7 @@ namespace ConsoleGameEngine
             for (int i = 0; i <= longest; i++)
             {
                 if (y1 >= CanvasH || x1 >= CanvasW || x1 < 0 || y1 < 0) continue;
-                buffer[y1, x1] = strokeStyle + "█";
+                buffer[y1, x1] = strokeStyle + Char.ToString(Brush);
                 numerator += shortest;
                 if (!(numerator < longest))
                 {

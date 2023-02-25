@@ -41,16 +41,17 @@ namespace ATM
 
             for (int i = 0; i < objects.Length; i++)
             {
-                GameObject go = null;
+                GameObject obj = null;
                 switch (objects[i].Type)
                 {
-                    case "Atm": go = new Atm(objects[i].PosX, objects[i].PosY); break;
-                    case "Hook": go = new Hook(objects[i].PosX, objects[i].PosY); break;
-                    case "Plug": go = new Plug(objects[i].PosX, objects[i].PosY); break;
-                    case "Ladder": go = new Ladder(objects[i].PosX, objects[i].PosY, objects[i].Height); break;
-                    case "Surface": go = new Surface(objects[i].PosX, objects[i].PosY, objects[i].Width, objects[i].Height, objects[i].Color); break;
+                    case "Atm": obj = new Atm(objects[i].PosX, objects[i].PosY); break;
+                    case "Hook": obj = new Hook(objects[i].PosX, objects[i].PosY); break;
+                    case "Plug": obj = new Plug(objects[i].PosX, objects[i].PosY); break;
+                    case "Ladder": obj = new Ladder(objects[i].PosX, objects[i].PosY, objects[i].Height); break;
+                    case "Surface": obj = new Surface(objects[i].PosX, objects[i].PosY, objects[i].Width, objects[i].Height, objects[i].Color); break;
+                    case "Trapdoor": obj = new Trapdoor(objects[i].PosX, objects[i].PosY, objects[i].Width, objects[i].Height); break;
                 }
-                gameObjects[i] = go;
+                gameObjects[i] = obj;
             }
             return gameObjects;
         } 

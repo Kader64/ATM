@@ -14,14 +14,16 @@ namespace ATM.Resources.BaseClasses
         {
             PosX = posX;
             PosY = posY;
-            Width = 5;
-            Height = 5;
+            Width = 3;
+            Height = 3;
             Color = EscapeColor.Color("Purple");
         }
 
         public override void Render(ASCIICanvas canvas)
         {
+            canvas.Brush = '▒';
             base.Render(canvas);
+            canvas.ResetBrush();
         }
 
         public override void OnCollision(Player player)

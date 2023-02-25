@@ -1,26 +1,29 @@
-﻿using ConsoleGameEngine;
+﻿using ATM.Resources.BaseClasses;
+using ConsoleGameEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATM.Resources.BaseClasses
+namespace ATM.Resources.GameClasses
 {
-    class Surface : GameObject
+    class Trapdoor : GameObject
     {
-        public Surface(int posX, int posY, int objW, int objH, string objColor) : base(posX, posY)
+        public Trapdoor(int posX, int posY, int objW, int objH) : base(posX, posY)
         {
             this.Width = objW;
             this.Height = objH;
             this.PosX = posX;
             this.PosY = posY;
-            this.Color = objColor;
+            this.Color = EscapeColor.Color("Yellow");
         }
 
         public override void Render(ASCIICanvas canvas)
         {
+            canvas.Brush = '░';
             base.Render(canvas);
+            canvas.ResetBrush();
         }
 
         public override void OnCollision(Player player)
@@ -39,10 +42,6 @@ namespace ATM.Resources.BaseClasses
 
             if (player.PosY + player.Height >= PosY && player.PosY + player.Height <= PosY + Height)
             {
-                player.isColiding = true;
-                player.Jumps = 1;
-                player.acc = 0;
-                player.SetPos(player.PosX, PosY - player.Height - 1);
                 return;
             }
             else
