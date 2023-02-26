@@ -16,8 +16,11 @@ namespace ATM.Resources
             generateText("   Kwota: ");
             Console.ReadLine();
 
+            SoundManager.Music.Stop();
+
             showLoadingScreen();
             Console.Clear();
+
 
             Console.WriteLine();
             generateText($"  {EscapeColor.Color("Yellow")}Ty: {EscapeColor.Color("White")}Co się stało,\n  czemu bankomat nie działa?\n");

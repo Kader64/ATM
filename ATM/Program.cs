@@ -15,7 +15,7 @@ class Program
         ConsoleManager.SetConsoleFont(20, 40, 0, 0);
         Console.CursorVisible = false;
 
-        SoundManager.Music.PlayLoop(Sound.MUSIC_MENU);
+        SoundManager.Music.PlayLoop(Sound.MUSIC_MENU, 0.5f);
 
         Menu.showMainMenu();
     }

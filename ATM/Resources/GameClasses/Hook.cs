@@ -31,6 +31,7 @@ namespace ATM.Resources.BaseClasses
             if (player.CableHeld == null) return;
             if (player.CableHeld.Source == this) return;
 
+            SoundManager.SFX.Play(Sound.SFX_HOOK);
             player.CableHeld.Target = this;
             var cable = new Cable(this);
             player.CableHeld = cable;

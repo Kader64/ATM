@@ -12,7 +12,7 @@ namespace ConsoleGameEngine
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
 
-        public void PlayLoop(string fileName)
+        public void PlayLoop(string fileName, float volume = 1f)
         {
             if (outputDevice != null)
             {
@@ -21,14 +21,14 @@ namespace ConsoleGameEngine
             }
 
             audioFile = new AudioFileReader(fileName);
-            audioFile.Volume = 0.5f;
+            audioFile.Volume = volume;
 
             outputDevice = new WaveOutEvent();
             outputDevice.Init(new LoopStream(audioFile));
             outputDevice.Play();
         }
 
-        public void Play(string fileName)
+        public void Play(string fileName, float volume = 1f)
         {
             if (outputDevice != null)
             {
@@ -37,7 +37,7 @@ namespace ConsoleGameEngine
             }
 
             audioFile = new AudioFileReader(fileName);
-            audioFile.Volume = 0.5f;
+            audioFile.Volume = volume;
 
             outputDevice = new WaveOutEvent();
             outputDevice.Init(audioFile);
@@ -51,14 +51,6 @@ namespace ConsoleGameEngine
                 outputDevice.Stop();
                 outputDevice.Dispose();
                 outputDevice = null;
-            }
-        }
-
-        public void SetVolume(float volume)
-        {
-            if (audioFile != null)
-            {
-                audioFile.Volume = volume;
             }
         }
     }

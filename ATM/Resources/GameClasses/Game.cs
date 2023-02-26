@@ -1,5 +1,6 @@
 ﻿using ATM.Resources.BaseClasses;
 using ConsoleGameEngine;
+using System.Diagnostics;
 
 namespace ATM.Resources
 {
@@ -7,11 +8,15 @@ namespace ATM.Resources
     {
         public static World world;
         public static CGE GameEngine;
+        public static int Level = 1;
+        public static int MaxLevel = 3;
+        public static Stopwatch Stopwatch;
 
         public static void Init()
         {
             world = new World();
             GameEngine = new CGE();
+            Stopwatch = new Stopwatch();
 
             GameEngine.GameLogic = () => Loop(GameEngine);
             StartNextLevel();
@@ -20,12 +25,13 @@ namespace ATM.Resources
         public static void StartNextLevel()
         {
             Console.Clear();
+            Stopwatch.Restart();
             GameEngine.canvas.SetupConsole();
-            SoundManager.Music.PlayLoop(Sound.MUSIC_GAME);
+            SoundManager.Music.PlayLoop(Sound.MUSIC_GAME, 0.3f);
             Console.ForegroundColor = ConsoleColor.White;
             world = new World();
 
-            world.WorldObjects = FileManager.ReadGameObjectsData(1).ToList();
+            world.WorldObjects = FileManager.ReadGameObjectsData(Level).ToList();
 
             GameEngine.run();
         }

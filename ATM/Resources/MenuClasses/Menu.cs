@@ -68,12 +68,12 @@ namespace ATM
             builder.run();
         }
 
-        public static void showNextLevelMenu(int lvl, string time,int points)
+        public static void showNextLevelMenu()
         {
             Console.Clear();
             Game.GameEngine.stop();
-
-            SoundManager.Music.Stop();
+            var time = Game.Stopwatch.ElapsedMilliseconds;
+            SoundManager.Music.PlayLoop(Sound.MUSIC_NEXTLEVEL, 0.7f);
             Console.SetWindowSize(40, 20);
             Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
             ConsoleManager.SetConsoleFont(20, 40, 0, 0);
@@ -82,17 +82,24 @@ namespace ATM
 
             MenuBuilder builder = new MenuBuilder();
 
-            builder.Add(new TextLine($"\n   Ukończono z czasem: {EscapeColor.Color("Yellow")}{time}"));
+            builder.Add(new TextLine($"\n   Ukończono z czasem: {EscapeColor.Color("Yellow")}{Convert.ToInt32(time/1000)} s"));
 
-            builder.Add(new TextLine($"   Ilość zdobytych punktów: {EscapeColor.Color("Yellow")}{points}"));
+            builder.Add(new TextLine($"   Ilość zdobytych punktów: {EscapeColor.Color("Yellow")}{100}"));
 
             builder.Add(new TextLine("\n\n\n"));
 
-            builder.Add(new Title("POZIOM "+lvl+" ZAKOŃCZONY!", TITLE_COLOR));
+            builder.Add(new Title("POZIOM "+Game.Level+" ZAKOŃCZONY!", TITLE_COLOR));
 
             builder.Add(new Option("Następny", "center", FG_COLOR, () =>
             {
                 LoadingPage.showLoadingScreen();
+
+                Game.Level++;
+                if (Game.Level > Game.MaxLevel)
+                {
+                    Exit();
+                }
+
                 Game.StartNextLevel();
                 return 0;
             }));

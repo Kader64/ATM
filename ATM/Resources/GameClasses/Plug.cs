@@ -29,8 +29,11 @@ namespace ATM.Resources.BaseClasses
             if (player.CableHeld == null) return;
             player.CableHeld.Target = this;
             player.CableHeld = null;
+            Game.Stopwatch.Stop();
+            SoundManager.SFX.Play(Sound.SFX_WIN);
+            Thread.Sleep(2000);
 
-            Menu.showNextLevelMenu(1, "2:00", 100);
+            Menu.showNextLevelMenu();
         }
     }
 }
