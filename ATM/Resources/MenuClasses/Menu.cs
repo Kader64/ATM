@@ -82,9 +82,14 @@ namespace ATM
 
             MenuBuilder builder = new MenuBuilder();
 
-            builder.Add(new TextLine($"\n   Ukończono z czasem: {EscapeColor.Color("Yellow")}{Convert.ToInt32(time/1000)} s"));
+            int timeInt = Convert.ToInt32(time / 1000);
 
-            builder.Add(new TextLine($"   Ilość zdobytych punktów: {EscapeColor.Color("Yellow")}{100}"));
+            builder.Add(new TextLine($"\n   Ukończono z czasem: {EscapeColor.Color("Yellow")}{timeInt} s"));
+
+            int score = (int)(500 - (0.75*timeInt));
+            score = score >= 0 ? score : 0;
+
+            builder.Add(new TextLine($"   Ilość zdobytych punktów: {EscapeColor.Color("Yellow")}{score}"));
 
             builder.Add(new TextLine("\n\n\n"));
 
