@@ -144,9 +144,35 @@ namespace ATM
 
             LoadingPage.showLoadingScreen();
 
+            string[] deathPrompt =
+            {
+                "Cóż, przynajmniej próbowałeś.",
+                "Nie jest łatwo zwyciężyć, /n ale nie poddawaj się.",
+                "Może powinieneś zmienić swoją strategię?",
+                "Nie bądź zbyt zawiedziony,/n poziom był dosyć trudny.",
+                "Twoja gra zakończyła się porażką, /n ale przynajmniej zdobyłeś doświadczenie.",
+                "Nie zawsze można wygrać /n ale liczą się chęci!",
+                "Cóż, wydaje się, /n że musisz jeszcze nad czymś popracować.",
+                "Nie martw się, /n każdy ma swoje złe dni.",
+                "Jesteś diobeł, i tyle!"
+            };
+
+            Random prompt = new Random();
+
             MenuBuilder builder = new MenuBuilder();
             builder.Add(new Title("KONIEC GRY", EscapeColor.ColorRGB(255,0,0)));
-            builder.Add(new TextLine("Wtyczka uległa zniszczeniu!","center"));
+            string chosenPrompt = deathPrompt[prompt.Next(deathPrompt.Length - 1)];
+            if(chosenPrompt.Split("/n").Length > 0)
+            {
+                foreach(string promptSilce in chosenPrompt.Split("/n"))
+                {
+                    builder.Add(new TextLine(promptSilce, "center"));
+                }
+            }
+            else
+            {
+                builder.Add(new TextLine(chosenPrompt, "center"));
+            }
             builder.Add(new TextLine("\n\n\n"));
             builder.Add(new Option("Restart", "center", FG_COLOR, () =>
             {
