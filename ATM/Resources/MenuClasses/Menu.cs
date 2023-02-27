@@ -12,11 +12,15 @@ namespace ATM
     public static class Menu
     {
         private static string FG_COLOR = EscapeColor.ColorRGB(0, 230, 230);
-        private static string POINTER_COLOR = EscapeColor.ColorRGB(0, 255, 0);
         private static string TITLE_COLOR = EscapeColor.ColorRGB(0, 255, 0);
         public static string Username;
         public static void showMainMenu()
         {
+            if (SoundManager.Music.Path != Sound.MUSIC_MENU)
+            {
+                SoundManager.Music.PlayLoop(Sound.MUSIC_MENU);
+            }
+
             MenuBuilder builder = new MenuBuilder();
 
             builder.Add(new Title("A.T.M.", TITLE_COLOR));
@@ -42,17 +46,21 @@ namespace ATM
                 return 0;
             }));
 
-            builder.pointerColor = POINTER_COLOR;
             builder.run();
         }
         public static void showUsers()
         {
+            if (SoundManager.Music.Path != Sound.MUSIC_MENU)
+            {
+                SoundManager.Music.PlayLoop(Sound.MUSIC_MENU);
+            }
             MenuBuilder builder = new MenuBuilder();
-            builder.Add(new Title("Użytkownicy", TITLE_COLOR));
 
+            builder.Add(new Title("Użytkownicy", TITLE_COLOR));
             var users = FileManager.ReadUsersData();
             users = users.OrderByDescending(x => x.score).ToArray();
             int i = 0;
+
             while(i<10 && i<users.Length)
             {
                 builder.Add(new TextLine($"  {users[i].username}: {EscapeColor.ColorRGB(255, 204, 0)}{users[i].score}$"));
@@ -65,29 +73,25 @@ namespace ATM
                 return 0;
             }));
 
-            builder.pointerColor = POINTER_COLOR;
             builder.run();
-        }
-        private static void PrepareWindow()
-        {
-            Console.Clear();
-            SoundManager.Music.PlayLoop(Sound.MUSIC_NEXTLEVEL, 0.7f);
-            Console.SetWindowSize(40, 20);
-            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
-            ConsoleManager.SetConsoleFont(20, 40, 0, 0);
         }
 
         public static void showNextLevelMenu()
         {
             Game.GameEngine.stop();
-            PrepareWindow();
-            var time = Game.Stopwatch.ElapsedMilliseconds;
 
+            SoundManager.Music.PlayLoop(Sound.MUSIC_NEXTLEVEL, 0.7f);
+
+            Console.SetWindowSize(40, 20);
+            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
+            ConsoleManager.SetConsoleFont(20, 40, 0, 0);
+
+            var time = Game.Stopwatch.ElapsedMilliseconds;
             int timeInt = Convert.ToInt32(time / 1000);
             int score = (int)(500 - (0.75 * timeInt));
             score = score >= 0 ? score : 0;
-            updateLeaderboard(score);
 
+            updateLeaderboard(score);
             LoadingPage.showLoadingScreen();
 
             MenuBuilder builder = new MenuBuilder();
@@ -102,11 +106,12 @@ namespace ATM
                 Game.Level++;
                 if (Game.Level > Game.MaxLevel)
                 {
-                    
+                    GameWin();
                 }
-                GameWin();
-
-                Game.StartNextLevel();
+                else
+                {
+                    Game.StartNextLevel();
+                }
                 return 0;
             }));
             builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
@@ -115,7 +120,6 @@ namespace ATM
                 return 0;
             }));
 
-            builder.pointerColor = POINTER_COLOR;
             builder.run();
         }
         private static void Exit()
@@ -129,18 +133,25 @@ namespace ATM
         }
         public static void GameOver()
         {
-            PrepareWindow();
+            if (SoundManager.Music.Path != Sound.MUSIC_NEXTLEVEL)
+            {
+                SoundManager.Music.PlayLoop(Sound.MUSIC_NEXTLEVEL);
+            }
+
+            Console.SetWindowSize(40, 20);
+            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
+            ConsoleManager.SetConsoleFont(20, 40, 0, 0);
+
             LoadingPage.showLoadingScreen();
 
             MenuBuilder builder = new MenuBuilder();
-            builder.Add(new Title("KONIEC GRY", EscapeColor.Color("Red")));
+            builder.Add(new Title("KONIEC GRY", EscapeColor.ColorRGB(255,0,0)));
+            builder.Add(new TextLine("Wtyczka uległa zniszczeniu!","center"));
             builder.Add(new TextLine("\n\n\n"));
             builder.Add(new Option("Restart", "center", FG_COLOR, () =>
             {
                 LoadingPage.showLoadingScreen();
-
-                Game.Level = 1;
-                showNextLevelMenu();
+                Game.Init();
                 return 0;
             }));
             builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
@@ -152,7 +163,6 @@ namespace ATM
         }
         public static void GameWin()
         {
-            Console.Clear();
             LoadingPage.showLoadingScreen();
 
             MenuBuilder builder = new MenuBuilder();

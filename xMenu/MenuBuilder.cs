@@ -7,7 +7,7 @@ namespace xMenu
         private List<Title> Titles;
         private List<Option> Options;
         private List<TextLine> Textlines;
-        public string pointerColor { get; set; } = "\x1b[36m"; 
+        public string pointerColor { get; set; } = "\x1b[32m"; 
         private int chosenOption = 0;
 
         public MenuBuilder()

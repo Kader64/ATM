@@ -17,7 +17,7 @@ namespace xMenu
             Text = text;
         }
 
-        public TextLine(string text, string aligment, string color) : this(text)
+        public TextLine(string text, string aligment, string color = "\x1b[37m") : this(text)
         {
             Aligment = aligment;
             Color = color;

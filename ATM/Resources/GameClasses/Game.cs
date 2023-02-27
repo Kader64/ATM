@@ -8,8 +8,8 @@ namespace ATM.Resources
     {
         public static World world;
         public static CGE GameEngine;
-        public static int Level = 1;
-        public static int MaxLevel = 3;
+        public static int Level;
+        public static int MaxLevel;
         public static Stopwatch Stopwatch;
 
         public static void Init()
@@ -17,6 +17,8 @@ namespace ATM.Resources
             world = new World();
             GameEngine = new CGE();
             Stopwatch = new Stopwatch();
+            Level = 1;
+            MaxLevel = 1;
 
             GameEngine.GameLogic = () => Loop(GameEngine);
             StartNextLevel();

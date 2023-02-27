@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
+﻿using System.Text.Json;
 using ATM.Resources.BaseClasses;
 using ConsoleGameEngine;
 using ATM.Resources.GameClasses;
@@ -21,15 +16,25 @@ namespace ATM
             };
 
             var json = JsonSerializer.Serialize(data, options);
-
             File.WriteAllText(path+ "users.json", json);
         }
 
         public static UserData[] ReadUsersData()
         {
-            string json = File.ReadAllText(path + "users.json");
-            UserData[] data = JsonSerializer.Deserialize<UserData[]>(json);
-            return data;
+            if (!File.Exists(path + "users.json"))
+            {
+                File.Create(path + "users.json");
+            }
+            try
+            {
+                string json = File.ReadAllText(path + "users.json");
+                UserData[] data = JsonSerializer.Deserialize<UserData[]>(json);
+                return data;
+            }
+            catch(Exception ex)
+            {
+                return new UserData[0];
+            }
         }
 
         public static GameObject[] ReadGameObjectsData(int level)
