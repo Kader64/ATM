@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleGameEngine", "Consol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xMenu", "xMenu\xMenu.csproj", "{A97548B1-855B-47C2-A5DF-A9785A0B1D85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTests", "xUnitTests\xUnitTests.csproj", "{A54E7CFE-5533-4C81-A68E-28421CCA0AF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A97548B1-855B-47C2-A5DF-A9785A0B1D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A54E7CFE-5533-4C81-A68E-28421CCA0AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54E7CFE-5533-4C81-A68E-28421CCA0AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54E7CFE-5533-4C81-A68E-28421CCA0AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54E7CFE-5533-4C81-A68E-28421CCA0AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
