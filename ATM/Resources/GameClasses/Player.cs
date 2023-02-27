@@ -16,7 +16,7 @@ namespace ATM.Resources.BaseClasses
         public int Jumps = 1;
 
 
-        private int MaxJumpSpeed = 8;
+        private int MaxJumpSpeed = 7;
 
         public int acc = 0;
 
