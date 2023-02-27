@@ -8,30 +8,6 @@
   },
   {
     "Type": "Surface",
-    "PosX": 10,
-    "PosY": 100,
-    "Width": 70,
-    "Height": 2,
-    "Color": "\u001B[37m"
-  },
-  {
-    "Type": "Surface",
-    "PosX": 180,
-    "PosY": 67,
-    "Width": 5,
-    "Height": 33,
-    "Color": "\u001B[37m"
-  },
-  {
-    "Type": "Surface",
-    "PosX": 100,
-    "PosY": 100,
-    "Width": 180,
-    "Height": 2,
-    "Color": "\u001B[37m"
-  },
-  {
-    "Type": "Surface",
     "PosX": 0,
     "PosY": 148,
     "Width": 300,
@@ -47,16 +23,6 @@
     "Type": "Hook",
     "PosX": 90,
     "PosY": 60
-  },
-  {
-    "Type": "Hook",
-    "PosX": 181,
-    "PosY": 50
-  },
-  {
-    "Type": "Hook",
-    "PosX": 100,
-    "PosY": 130
   },
   {
     "Type": "Atm",
