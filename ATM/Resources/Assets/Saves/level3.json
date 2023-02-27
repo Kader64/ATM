@@ -1,0 +1,72 @@
+[
+  {
+    "Type": "Trapdoor",
+    "PosX": 80,
+    "PosY": 100,
+    "Width": 20,
+    "Height": 2
+  },
+  {
+    "Type": "Surface",
+    "PosX": 10,
+    "PosY": 100,
+    "Width": 70,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 180,
+    "PosY": 67,
+    "Width": 5,
+    "Height": 33,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 100,
+    "PosY": 100,
+    "Width": 180,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 0,
+    "PosY": 148,
+    "Width": 300,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Plug",
+    "PosX": 255,
+    "PosY": 130
+  },
+  {
+    "Type": "Hook",
+    "PosX": 90,
+    "PosY": 60
+  },
+  {
+    "Type": "Hook",
+    "PosX": 181,
+    "PosY": 50
+  },
+  {
+    "Type": "Hook",
+    "PosX": 100,
+    "PosY": 130
+  },
+  {
+    "Type": "Atm",
+    "PosX": 255,
+    "PosY": 80
+  },
+  {
+    "Type": "Ladder",
+    "PosX": 5,
+    "PosY": 90,
+    "Height": 58
+  }
+]

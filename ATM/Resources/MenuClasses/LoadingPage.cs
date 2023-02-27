@@ -4,16 +4,15 @@ namespace ATM.Resources
 {
     internal static class LoadingPage
     {
-
         public static void RunIntro()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
 
-            generateText("   Nazwa Konta: ");
+            generateText($"   Nazwa Konta: ");
             Menu.Username = Console.ReadLine();
 
-            generateText("   Kwota: ");
+            generateText($"   Kwota: ");
             Console.ReadLine();
 
             SoundManager.Music.Stop();
@@ -21,13 +20,12 @@ namespace ATM.Resources
             showLoadingScreen();
             Console.Clear();
 
-
             Console.WriteLine();
-            generateText($"  {EscapeColor.Color("Yellow")}Ty: {EscapeColor.Color("White")}Co się stało,\n  czemu bankomat nie działa?\n");
-            generateText($"  {EscapeColor.Color("Yellow")}Starsza Pani: {EscapeColor.Color("White")}Chłopcze pospiesz się,\n  muszę wypłacić pieniądze!\n");
-            generateText($"  {EscapeColor.Color("Yellow")}Nieznajomy: {EscapeColor.Color("White")}Wtyczka wypadła,\n  podnieś ją i podłącz do gniazdka...\n");
-            generateText($"  {EscapeColor.Color("Yellow")}Starsza Pani: {EscapeColor.Color("White")}Tylko szybko!\n  Bo będzie minus za tempo.\n");
-            generateText($"  {EscapeColor.Color("Yellow")}Ty: {EscapeColor.Color("White")}Dobrze dobrze, zajmę się tym!\n");
+            generateText($"  {EscapeColor.ColorRGB(255, 215, 0)}Ty: {EscapeColor.Color("White")}Co się stało,\n  czemu bankomat nie działa?\n");
+            generateText($"  {EscapeColor.ColorRGB(255, 215, 0)}Starsza Pani: {EscapeColor.Color("White")}Chłopcze pospiesz się,\n  muszę wypłacić pieniądze!\n");
+            generateText($"  {EscapeColor.ColorRGB(255, 215, 0)}Nieznajomy: {EscapeColor.Color("White")}Wtyczka wypadła,\n  podnieś ją i podłącz do gniazdka...\n");
+            generateText($"  {EscapeColor.ColorRGB(255, 215, 0)}Starsza Pani: {EscapeColor.Color("White")}Tylko szybko!\n  Bo będzie minus za tempo.\n");
+            generateText($"  {EscapeColor.ColorRGB(255, 215, 0)}Ty: {EscapeColor.Color("White")}Dobrze dobrze, zajmę się tym!\n");
 
             showLoadingScreen();
 
@@ -36,22 +34,24 @@ namespace ATM.Resources
         {
             Console.ForegroundColor = ConsoleColor.White;
             Random rnd = new Random();
-            for (int i = 0; i < 2; i++)
+            int i = 7000;
+            while(i>0)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(getRandomChar());
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(getRandomChar());
-                Thread.Sleep(1);
+                i--;
             }
 
-            for (int i = 0; i < 2; i++)
+            i = 800;
+            while (i > 0)
             {
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(" ");
                 Console.SetCursorPosition(rnd.Next(0, Console.BufferWidth), rnd.Next(0, Console.BufferHeight));
                 Console.Write(" ");
-                Thread.Sleep(1);
+                i--;
             }
         }
         private static char getRandomChar()
@@ -68,7 +68,7 @@ namespace ATM.Resources
             foreach (char a in text)
             {
                 Console.Write(a);
-                Thread.Sleep(70);
+                Thread.Sleep(65);
             }
         }
     }

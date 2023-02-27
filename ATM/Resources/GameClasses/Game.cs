@@ -18,7 +18,7 @@ namespace ATM.Resources
             GameEngine = new CGE();
             Stopwatch = new Stopwatch();
             Level = 1;
-            MaxLevel = 1;
+            MaxLevel = 3;
 
             GameEngine.GameLogic = () => Loop(GameEngine);
             StartNextLevel();
