@@ -14,6 +14,7 @@ namespace ATM
         private static string FG_COLOR = EscapeColor.ColorRGB(0, 230, 230);
         private static string POINTER_COLOR = EscapeColor.ColorRGB(0, 255, 0);
         private static string TITLE_COLOR = EscapeColor.ColorRGB(0, 255, 0);
+        public static string Username;
         public static void showMainMenu()
         {
             MenuBuilder builder = new MenuBuilder();
@@ -67,34 +68,33 @@ namespace ATM
             builder.pointerColor = POINTER_COLOR;
             builder.run();
         }
-
-        public static void showNextLevelMenu()
+        private static void PrepareWindow()
         {
             Console.Clear();
-            Game.GameEngine.stop();
-            var time = Game.Stopwatch.ElapsedMilliseconds;
             SoundManager.Music.PlayLoop(Sound.MUSIC_NEXTLEVEL, 0.7f);
             Console.SetWindowSize(40, 20);
             Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
             ConsoleManager.SetConsoleFont(20, 40, 0, 0);
+        }
+
+        public static void showNextLevelMenu()
+        {
+            Game.GameEngine.stop();
+            PrepareWindow();
+            var time = Game.Stopwatch.ElapsedMilliseconds;
+
+            int timeInt = Convert.ToInt32(time / 1000);
+            int score = (int)(500 - (0.75 * timeInt));
+            score = score >= 0 ? score : 0;
+            updateLeaderboard(score);
 
             LoadingPage.showLoadingScreen();
 
             MenuBuilder builder = new MenuBuilder();
-
-            int timeInt = Convert.ToInt32(time / 1000);
-
             builder.Add(new TextLine($"\n   Ukończono z czasem: {EscapeColor.Color("Yellow")}{timeInt} s"));
-
-            int score = (int)(500 - (0.75*timeInt));
-            score = score >= 0 ? score : 0;
-
             builder.Add(new TextLine($"   Ilość zdobytych punktów: {EscapeColor.Color("Yellow")}{score}"));
-
             builder.Add(new TextLine("\n\n\n"));
-
             builder.Add(new Title("POZIOM "+Game.Level+" ZAKOŃCZONY!", TITLE_COLOR));
-
             builder.Add(new Option("Następny", "center", FG_COLOR, () =>
             {
                 LoadingPage.showLoadingScreen();
@@ -102,13 +102,13 @@ namespace ATM
                 Game.Level++;
                 if (Game.Level > Game.MaxLevel)
                 {
-                    Exit();
+                    
                 }
+                GameWin();
 
                 Game.StartNextLevel();
                 return 0;
             }));
-
             builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
             {
                 Exit();
@@ -126,6 +126,71 @@ namespace ATM
             Console.Write($"{new string(' ', (Console.BufferWidth - msg.Length) / 2)}{EscapeColor.ColorRGB(255, 255, 255)}{msg}");
             Console.ForegroundColor = ConsoleColor.Black;
             Environment.Exit(0);
+        }
+        public static void GameOver()
+        {
+            PrepareWindow();
+            LoadingPage.showLoadingScreen();
+
+            MenuBuilder builder = new MenuBuilder();
+            builder.Add(new Title("KONIEC GRY", EscapeColor.Color("Red")));
+            builder.Add(new TextLine("\n\n\n"));
+            builder.Add(new Option("Restart", "center", FG_COLOR, () =>
+            {
+                LoadingPage.showLoadingScreen();
+
+                Game.Level = 1;
+                showNextLevelMenu();
+                return 0;
+            }));
+            builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
+            {
+                Exit();
+                return 0;
+            }));
+            builder.run();
+        }
+        public static void GameWin()
+        {
+            Console.Clear();
+            LoadingPage.showLoadingScreen();
+
+            MenuBuilder builder = new MenuBuilder();
+            builder.Add(new Title("GRA UKOŃCZONA", TITLE_COLOR));
+            builder.Add(new TextLine("\n\n\n"));
+            builder.Add(new Option("Sprawdź Wynik", "center", FG_COLOR, () =>
+            {
+                showUsers();
+                return 0;
+            }));
+            builder.Add(new Option("Wyjście", "center", FG_COLOR, () =>
+            {
+                Exit();
+                return 0;
+            }));
+            builder.run();
+        }
+        private static void updateLeaderboard(int score)
+        {
+            if (Username == null) return;
+
+            var data = FileManager.ReadUsersData().ToList();
+
+            bool found = false;
+            for (int i=0; i<data.Count; i++)
+            {
+                if(data[i].username == Username)
+                {
+                    data[i].score += score;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                data.Add(new UserData(Username,score));
+            }
+            FileManager.WriteUsersData(data.ToArray());
         }
     }
 }

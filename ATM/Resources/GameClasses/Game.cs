@@ -44,7 +44,7 @@ namespace ATM.Resources
 
                 if(world.player.CableHeld != null)
                 {
-                    if (world.player.CableHeld.ChkIntersect(world.WorldObjects[i])) ge.stop();
+                    if (world.player.CableHeld.ChkIntersect(world.WorldObjects[i])) Menu.GameOver();
                 }
 
                 if (world.player.Collides(world.WorldObjects[i]))
