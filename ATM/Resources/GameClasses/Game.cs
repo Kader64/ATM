@@ -1,6 +1,7 @@
 ﻿using ATM.Resources.BaseClasses;
 using ConsoleGameEngine;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace ATM.Resources
 {
@@ -11,6 +12,8 @@ namespace ATM.Resources
         public static int Level;
         public static int MaxLevel;
         public static Stopwatch Stopwatch;
+
+        private static int rSafety;
 
         public static void Init()
         {
@@ -41,6 +44,17 @@ namespace ATM.Resources
 
         private static void Loop(CGE ge)
         {
+
+            if (KeyboardManager.IsKeyPressed(Keys.R))
+            {
+                rSafety++;
+                if(rSafety >= 60) Menu.GameOver();
+            }
+            else
+            {
+                rSafety = 0;
+            }
+
             for (int i = 0; i < world.WorldObjects.Count; i++)
             {
                 world.WorldObjects[i].Render(ge.canvas);

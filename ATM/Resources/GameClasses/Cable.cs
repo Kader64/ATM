@@ -58,7 +58,7 @@ namespace ATM.Resources.BaseClasses
             int numerator = longest >> 1;
             for (int i = 0; i <= longest; i++)
             {
-                if (x1 >= obj.PosX && x1 <= obj.PosX + obj.Width && y1 >= obj.PosY && y1 <= obj.PosY + obj.Height) return true;
+                if (x1 > obj.PosX && x1 < obj.PosX + obj.Width && y1 > obj.PosY && y1 < obj.PosY + obj.Height) return true;
                 numerator += shortest;
                 if (!(numerator < longest))
                 {
