@@ -1,38 +1,217 @@
 [
   {
-    "Type": "Trapdoor",
-    "PosX": 80,
-    "PosY": 100,
-    "Width": 20,
-    "Height": 2
-  },
-  {
     "Type": "Surface",
     "PosX": 0,
-    "PosY": 148,
-    "Width": 300,
+    "PosY": 150,
+    "Width": 305,
     "Height": 2,
     "Color": "\u001B[37m"
   },
   {
-    "Type": "Plug",
-    "PosX": 255,
-    "PosY": 130
+    "Type": "Surface",
+    "PosX": 60,
+    "PosY": 140,
+    "Width": 2,
+    "Height": 10,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Trapdoor",
+    "PosX": 0,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2
+  },
+  {
+    "Type": "Surface",
+    "PosX": 30,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Trapdoor",
+    "PosX": 60,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2
   },
   {
     "Type": "Hook",
+    "PosX": 40,
+    "PosY": 90
+  },
+  {
+    "Type": "Surface",
     "PosX": 90,
-    "PosY": 60
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 120,
+    "PosY": 85,
+    "Width": 2,
+    "Height": 37,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Hook",
+    "PosX": 132,
+    "PosY": 140
+  },
+  {
+    "Type": "Surface",
+    "PosX": 148,
+    "PosY": 100,
+    "Width": 2,
+    "Height": 12,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 150,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Trapdoor",
+    "PosX": 180,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2
+  },
+  {
+    "Type": "Surface",
+    "PosX": 210,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Trapdoor",
+    "PosX": 240,
+    "PosY": 110,
+    "Width": 30,
+    "Height": 2
+  },
+  {
+    "Type": "Surface",
+    "PosX": 270,
+    "PosY": 110,
+    "Width": 10,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 5,
+    "PosY": 90,
+    "Width": 20,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+
+  {
+    "Type": "Hook",
+    "PosX": 13,
+    "PosY": 40
+  },
+  {
+    "Type": "Hook",
+    "PosX": 290,
+    "PosY": 120
+  },
+  {
+    "Type": "Hook",
+    "PosX": 275,
+    "PosY": 90
+  },
+  {
+    "Type": "Surface",
+    "PosX": 30,
+    "PosY": 60,
+    "Width": 20,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 70,
+    "PosY": 50,
+    "Width": 20,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 110,
+    "PosY": 40,
+    "Width": 100,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 135,
+    "PosY": 20,
+    "Width": 2,
+    "Height": 20,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Hook",
+    "PosX": 125,
+    "PosY": 10
+  },
+  {
+    "Type": "Surface",
+    "PosX": 190,
+    "PosY": 10,
+    "Width": 2,
+    "Height": 15,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Hook",
+    "PosX": 170,
+    "PosY": 30
+  },
+  {
+    "Type": "Trapdoor",
+    "PosX": 210,
+    "PosY": 40,
+    "Width": 25,
+    "Height": 2
+  },
+  {
+    "Type": "Surface",
+    "PosX": 235,
+    "PosY": 40,
+    "Width": 70,
+    "Height": 2,
+    "Color": "\u001B[37m"
   },
   {
     "Type": "Atm",
-    "PosX": 255,
-    "PosY": 80
+    "PosX": 270,
+    "PosY": 20
+  },
+  {
+    "Type": "Plug",
+    "PosX": 160,
+    "PosY": 95
   },
   {
     "Type": "Ladder",
-    "PosX": 5,
-    "PosY": 90,
+    "PosX": 280,
+    "PosY": 110,
     "Height": 58
   }
 ]
