@@ -35,6 +35,16 @@ namespace ConsoleGameEngine
             runtime = new Timer();
             fpsTimer = new Stopwatch();
         }
+
+        public int WindowWidth()
+        {
+            return WINDOW_WIDTH;
+        }
+
+        public int WindowHeight()
+        {
+            return WINDOW_HEIGHT;
+        }
         public void run()
         {
             fpsTimer.Start();

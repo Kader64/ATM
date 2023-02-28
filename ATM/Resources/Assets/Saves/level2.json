@@ -1,17 +1,127 @@
 [
   {
     "Type": "Surface",
-    "PosX": 0,
-    "PosY": 150,
-    "Width": 40,
+    "PosX": 2,
+    "PosY": 148,
+    "Width": 300,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 120,
+    "PosY": 100,
+    "Width": 120,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 270,
+    "PosY": 100,
+    "Width": 30,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 2,
+    "PosY": 50,
+    "Width": 27,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Atm",
+    "PosX": 6,
+    "PosY": 30
+  },
+  {
+    "Type": "Surface",
+    "PosX": 40,
+    "PosY": 50,
+    "Width": 20,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 100,
+    "PosY": 70,
+    "Width": 20,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 190,
+    "PosY": 50,
+    "Width": 2,
+    "Height": 50,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Surface",
+    "PosX": 175,
+    "PosY": 80,
+    "Width": 15,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Hook",
+    "PosX": 80,
+    "PosY": 20
+  },
+  {
+    "Type": "Hook",
+    "PosX": 182,
+    "PosY": 92
+  },
+  {
+    "Type": "Hook",
+    "PosX": 117,
+    "PosY": 60
+  },
+  {
+    "Type": "Hook",
+    "PosX": 220,
+    "PosY": 30
+  },
+  {
+    "Type": "Hook",
+    "PosX": 230,
+    "PosY": 130
+  },
+  {
+    "Type": "Hook",
+    "PosX": 255,
+    "PosY": 50
+  },
+  {
+    "Type": "Trapdoor",
+    "PosX": 240,
+    "PosY": 100,
+    "Width": 30,
     "Height": 2
   },
   {
     "Type": "Surface",
-    "PosX": 0,
-    "PosY": 150,
-    "Width": 40,
-    "Height": 2
+    "PosX": 255,
+    "PosY": 122,
+    "Width": 20,
+    "Height": 2,
+    "Color": "\u001B[37m"
+  },
+  {
+    "Type": "Plug",
+    "PosX": 20,
+    "PosY": 141
+  },
+  {
+    "Type": "Ladder",
+    "PosX": 32,
+    "PosY": 45,
+    "Height": 103
   }
 ]
-

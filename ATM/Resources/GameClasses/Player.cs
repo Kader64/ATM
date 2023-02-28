@@ -64,7 +64,7 @@ namespace ATM.Resources.BaseClasses
                 else PosY += 1;
             }
 
-            if (KeyboardManager.IsKeyPressed(Keys.D) || KeyboardManager.IsKeyPressed(Keys.A))
+            if ((KeyboardManager.IsKeyPressed(Keys.D) || KeyboardManager.IsKeyPressed(Keys.A)))
             {
                 if (KeyboardManager.IsKeyPressed(Keys.A))
                 {

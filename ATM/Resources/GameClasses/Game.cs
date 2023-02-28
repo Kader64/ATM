@@ -44,6 +44,10 @@ namespace ATM.Resources
 
         private static void Loop(CGE ge)
         {
+            if(world.player.PosX+world.player.Width+1 < 0 || world.player.PosX-world.player.Width-1 > ge.WindowWidth())
+            {
+                Menu.GameOver();
+            }
 
             if (KeyboardManager.IsKeyPressed(Keys.R))
             {
