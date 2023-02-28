@@ -44,7 +44,7 @@ namespace ATM.Resources
 
         private static void Loop(CGE ge)
         {
-            if(world.player.PosX+world.player.Width+1 < 0 || world.player.PosX-world.player.Width-1 > ge.WindowWidth())
+            if(world.player.PosX+world.player.Width < 0 || world.player.PosX-world.player.Width > ge.WindowWidth())
             {
                 Menu.GameOver();
             }
